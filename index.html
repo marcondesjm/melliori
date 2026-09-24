@@ -442,6 +442,7 @@
 
     section {
       padding: 92px 0;
+      scroll-margin-top: 108px;
     }
 
     .section-alt {
@@ -725,6 +726,39 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--white);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .card:hover,
+    .booking-card:hover,
+    .proof-item:hover,
+    .condition:hover,
+    .therapy:hover,
+    .step:hover,
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(149, 64, 28, 0.28);
+      box-shadow: 0 20px 48px rgba(56, 52, 49, 0.14);
+    }
+
+    .motion-card {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 620ms ease,
+        transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .motion-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .motion-card.is-visible:hover {
+      transform: translateY(-4px);
     }
 
     .card h3 {
@@ -1104,6 +1138,11 @@
     }
 
     @media (max-width: 860px) {
+      .topbar {
+        position: sticky;
+        background: rgba(56, 52, 49, 0.92);
+      }
+
       .nav {
         position: relative;
         min-height: 76px;
@@ -1163,14 +1202,15 @@
       }
 
       .hero {
-        min-height: 74vh;
+        min-height: calc(100svh - 76px);
       }
 
       .hero::before {
-        background-position: 42% center;
+        background-position: 53% top;
+        transform: scale(1.01);
         background-image:
-          linear-gradient(90deg, rgba(56, 52, 49, 0.84), rgba(56, 52, 49, 0.56) 54%, rgba(56, 52, 49, 0.22)),
-          linear-gradient(0deg, rgba(56, 52, 49, 0.76), rgba(56, 52, 49, 0.08) 46%),
+          linear-gradient(90deg, rgba(56, 52, 49, 0.78), rgba(56, 52, 49, 0.48) 56%, rgba(56, 52, 49, 0.16)),
+          linear-gradient(0deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.12) 52%),
           url("assets/meliori-hero.png");
       }
 
@@ -1179,8 +1219,8 @@
       }
 
       .hero-inner {
-        padding-top: 108px;
-        padding-bottom: 34px;
+        padding-top: 42vh;
+        padding-bottom: 30px;
       }
 
       h1 {
@@ -1301,12 +1341,20 @@
       }
 
       .work-card.featured .work-photo {
-        height: 455px;
+        height: min(116vw, 500px);
       }
 
       .work-card.medium .work-photo,
       .work-card.small .work-photo {
-        height: 260px;
+        height: min(84vw, 350px);
+        background: var(--brown);
+      }
+
+      .work-card.medium .work-photo img,
+      .work-card.small .work-photo img {
+        object-fit: contain;
+        transform: none;
+        animation: none;
       }
 
       .work-caption {
@@ -1322,17 +1370,30 @@
       }
 
       .work-carousel-dot {
-        width: 8px;
-        height: 8px;
+        position: relative;
+        width: 30px;
+        height: 30px;
         padding: 0;
         border: 0;
         border-radius: 999px;
-        background: rgba(56, 52, 49, 0.24);
+        background: transparent;
         cursor: pointer;
+      }
+
+      .work-carousel-dot::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(56, 52, 49, 0.24);
+        transform: translate(-50%, -50%);
         transition: width 180ms ease, background 180ms ease;
       }
 
-      .work-carousel-dot.is-active {
+      .work-carousel-dot.is-active::before {
         width: 24px;
         background: var(--rose-dark);
       }
@@ -1343,6 +1404,7 @@
 
       section {
         padding: 68px 0;
+        scroll-margin-top: 92px;
       }
 
       .panel,
@@ -1398,6 +1460,12 @@
       .work-photo img,
       .hero::after {
         animation: none;
+      }
+
+      .motion-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
       }
 
       .hero::before,
@@ -1770,6 +1838,7 @@
     const workGallery = document.querySelector(".work-gallery");
     const workCards = workGallery ? Array.from(workGallery.querySelectorAll(".work-card")) : [];
     const workDots = document.querySelector(".work-carousel-dots");
+    const motionCards = document.querySelectorAll(".proof-item, .condition, .booking-card, .card, .therapy, .step, .work-card, .instagram-card, .panel");
 
     function setMenu(open) {
       document.body.classList.toggle("menu-open", open);
@@ -1838,6 +1907,33 @@
       }, { passive: true });
 
       setActiveWorkCard(0);
+    }
+
+    if (motionCards.length) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      motionCards.forEach((card, index) => {
+        card.classList.add("motion-card");
+        card.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+      });
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        motionCards.forEach((card) => card.classList.add("is-visible"));
+      } else {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.16,
+          rootMargin: "0px 0px -8% 0px"
+        });
+
+        motionCards.forEach((card) => cardObserver.observe(card));
+      }
     }
   </script>
 </body>
