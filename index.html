@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MELIORI | Tratamento para dor e artrose em Belo Horizonte</title>
+  <meta name="description" content="Clínica de fisioterapia especializada em dor ortopédica e artrose em Belo Horizonte. Avaliação individualizada, termografia e plano de cuidado personalizado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #2f2926;
+      --muted: #6d625c;
+      --paper: #fffaf5;
+      --surface: #f5eee6;
+      --rose: #b47d74;
+      --rose-dark: #87574f;
+      --straw: #d8bf93;
+      --brown: #6d5142;
+      --sage: #6f8074;
+      --white: #ffffff;
+      --line: rgba(47, 41, 38, 0.14);
+      --shadow: 0 22px 60px rgba(63, 43, 33, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(47, 41, 38, 0.42);
+      color: var(--white);
+      backdrop-filter: blur(18px);
+    }
+
+    .top-strip {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 38px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .top-strip span,
+    .top-strip a {
+      white-space: nowrap;
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: var(--rose-dark);
+      color: var(--white);
+      font-weight: 800;
+      box-shadow: 0 14px 28px rgba(96, 56, 47, 0.22);
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #754942;
+      box-shadow: 0 18px 34px rgba(96, 56, 47, 0.3);
+    }
+
+    .button:focus-visible,
+    .nav a:focus-visible,
+    .top-strip a:focus-visible,
+    .contact-row a:focus-visible,
+    .floating-whatsapp:focus-visible {
+      outline: 3px solid var(--straw);
+      outline-offset: 4px;
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.46);
+      box-shadow: none;
+    }
+
+    .button.secondary-dark {
+      background: transparent;
+      border-color: rgba(135, 87, 79, 0.34);
+      color: var(--rose-dark);
+      box-shadow: none;
+    }
+
+    .hero {
+      min-height: 82vh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(28, 21, 17, 0.78), rgba(28, 21, 17, 0.46) 47%, rgba(28, 21, 17, 0.18)),
+        linear-gradient(0deg, rgba(47, 41, 38, 0.7), rgba(47, 41, 38, 0.04) 42%),
+        url("assets/meliori-hero.png") center / cover no-repeat;
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 154px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #fff3e5;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: var(--straw);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 840px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(40px, 5vw, 72px);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin: 22px 0 30px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-proof {
+      width: min(1180px, calc(100% - 32px));
+      margin: -42px auto 0;
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .proof-item {
+      min-height: 130px;
+      padding: 26px;
+      background: var(--white);
+    }
+
+    .proof-item strong {
+      display: block;
+      color: var(--rose-dark);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .proof-item span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--rose-dark);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(34px, 4.4vw, 56px);
+    }
+
+    .lead {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reference-flow {
+      padding-top: 82px;
+    }
+
+    .care-board {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .care-board > * {
+      min-width: 0;
+    }
+
+    .care-intro {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .care-intro h2 {
+      color: var(--white);
+    }
+
+    .care-intro .section-kicker {
+      color: var(--straw);
+    }
+
+    .care-intro p {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .condition-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 100%;
+    }
+
+    .condition {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    .booking-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .booking-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .booking-card h3 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .booking-card p {
+      margin: 10px 0 18px;
+      color: var(--muted);
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .card h3 {
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: rgba(180, 125, 116, 0.14);
+      color: var(--rose-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .panel {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 18px 42px rgba(83, 63, 52, 0.08);
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      position: relative;
+      padding: 20px 20px 20px 70px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .step-number {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .step h3 {
+      font-size: 19px;
+    }
+
+    .step p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .therapy-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .therapy {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .thermal-note {
+      position: relative;
+      margin-top: 24px;
+      padding: 22px 24px 22px 78px;
+      border: 1px solid rgba(111, 128, 116, 0.22);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(111, 128, 116, 0.16), rgba(216, 191, 147, 0.08)),
+        rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+    }
+
+    .thermal-note::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: 30px;
+      height: 54px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 50% 78%, #b47d74 0 28%, transparent 30%),
+        linear-gradient(180deg, #6f8074 0%, #d8bf93 54%, #b47d74 100%);
+      box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.75);
+    }
+
+    .thermal-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .therapy strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--brown);
+    }
+
+    .therapy span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta-band {
+      background:
+        linear-gradient(120deg, rgba(47, 41, 38, 0.94), rgba(109, 81, 66, 0.88)),
+        url("assets/meliori-hero.png") center / cover no-repeat;
+      color: var(--white);
+    }
+
+    .cta-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta-content p {
+      margin: 14px 0 0;
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .contact-row strong {
+      color: var(--ink);
+    }
+
+    .footer {
+      padding: 34px 0;
+      background: #2f2926;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #2ea46f;
+      color: var(--white);
+      box-shadow: 0 16px 34px rgba(33, 104, 72, 0.32);
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 74vh;
+        background-position: 58% center;
+      }
+
+      .hero-inner {
+        padding-top: 132px;
+        padding-bottom: 34px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .hero-copy {
+        margin: 16px 0 22px;
+        font-size: 16px;
+      }
+
+      .hero-proof,
+      .grid-3,
+      .grid-2,
+      .split,
+      .cta-content,
+      .info-grid,
+      .care-board,
+      .booking-options,
+      .therapy-list {
+        grid-template-columns: 1fr;
+      }
+
+      .top-strip {
+        justify-content: center;
+        min-height: 34px;
+        overflow: hidden;
+      }
+
+      .top-strip span {
+        display: none;
+      }
+
+      .reference-flow {
+        padding-top: 58px;
+      }
+
+      .condition-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 8px;
+        scroll-snap-type: x proximity;
+      }
+
+      .condition {
+        flex: 0 0 210px;
+        scroll-snap-align: start;
+      }
+
+      .hero-proof {
+        margin-top: -34px;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .panel,
+      .card {
+        padding: 22px;
+      }
+
+      .cta-content .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-strip" aria-label="Contato rápido">
+      <a href="tel:+5531997870707">(31) 99787-0707</a>
+      <span>Rua Alagoas, 1314 - Sala 1014, Savassi</span>
+      <a href="mailto:melioribh@gmail.com">melioribh@gmail.com</a>
+    </div>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="MELIORI">
+        <span class="brand-mark">M</span>
+        <span>MELIORI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#condicoes">Condições</a>
+        <a href="#tratamento">Tratamento</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+        <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-label="MELIORI fisioterapia especializada">
+      <div class="hero-inner">
+        <span class="eyebrow">Fisioterapia especializada em dor e artrose</span>
+        <h1>Tratamento individualizado para dor ortopédica e artrose em Belo Horizonte</h1>
+        <p class="hero-copy">Na MELIORI, a avaliação clínica, a tecnologia e diferentes recursos terapêuticos se unem para construir um plano de cuidado próximo, objetivo e humanizado.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+          <a class="button secondary" href="#como-funciona">Ver como funciona</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="hero-proof" aria-label="Diferenciais">
+      <div class="proof-item">
+        <strong>10+</strong>
+        <span>anos de atuação no cuidado com dor e função</span>
+      </div>
+      <div class="proof-item">
+        <strong>BH</strong>
+        <span>atendimento presencial na Savassi, Belo Horizonte</span>
+      </div>
+      <div class="proof-item">
+        <strong>Plano</strong>
+        <span>conduta definida de acordo com cada paciente</span>
+      </div>
+    </div>
+
+    <section class="reference-flow" id="condicoes">
+      <div class="container">
+        <div class="care-board">
+          <div class="care-intro">
+            <span class="section-kicker">Condições atendidas</span>
+            <h2>Dores que pedem avaliação cuidadosa, não resposta pronta</h2>
+            <p>Se a dor limita movimento, treino, trabalho ou atividades simples do dia, a avaliação ajuda a entender o que está acontecendo e qual conduta faz sentido para o seu caso.</p>
+          </div>
+          <div>
+            <div class="condition-list" aria-label="Principais condições avaliadas">
+              <div class="condition">Artrose</div>
+              <div class="condition">Dor articular</div>
+              <div class="condition">Hérnia de disco</div>
+              <div class="condition">Tendinite</div>
+              <div class="condition">Bursite</div>
+              <div class="condition">Epicondilite</div>
+              <div class="condition">Fasceíte plantar</div>
+              <div class="condition">Esporão de calcâneo</div>
+              <div class="condition">Dor ortopédica</div>
+            </div>
+            <div class="booking-options">
+              <article class="booking-card">
+                <h3>Avaliação inicial</h3>
+                <p>Para entender a origem da dor, limitações, histórico e melhor caminho de cuidado.</p>
+                <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+              </article>
+              <article class="booking-card">
+                <h3>Plano de tratamento</h3>
+                <p>Para quem busca acompanhamento, fisioterapia especializada e recursos indicados caso a caso.</p>
+                <a class="button secondary-dark" href="#como-funciona">Entender o tratamento</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tratamento">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Para quem é</span>
+          <h2>Para pessoas que convivem com dor e querem entender suas opções</h2>
+          <p class="lead">A MELIORI atende pacientes com dor articular, dores ortopédicas e limitações de movimento, especialmente adultos a partir dos 30 anos, atletas e idosos.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon">Dor</div>
+            <h3>Dor ortopédica</h3>
+            <p>Casos como hérnia de disco, tendinite, bursite, epicondilite, esporão de calcâneo e fasceíte plantar são avaliados de forma individual.</p>
+          </article>
+          <article class="card">
+            <div class="icon">Art</div>
+            <h3>Artrose e articulações</h3>
+            <p>O tratamento busca reduzir limitações, melhorar mobilidade e apoiar o retorno mais confortável às atividades do dia a dia.</p>
+          </article>
+          <article class="card">
+            <div class="icon">Rot</div>
+            <h3>Decisão com orientação</h3>
+            <p>Indicado para quem recebeu indicação cirúrgica ou deseja avaliar alternativas terapêuticas antes de tomar uma decisão.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="como-funciona">
+      <div class="container split">
+        <div>
+          <span class="section-kicker">Como funciona</span>
+          <h2>Da avaliação ao acompanhamento, tudo começa pela sua dor</h2>
+          <p class="lead">Cada tratamento começa com uma avaliação individualizada para compreender a origem da dor, identificar limitações e definir a melhor estratégia para cada paciente.</p>
+          <div class="therapy-list">
+            <div class="therapy">
+              <strong>Termografia</strong>
+              <span>Recurso complementar que auxilia a observar alterações térmicas e direcionar áreas de atenção.</span>
+            </div>
+            <div class="therapy">
+              <strong>Fisioterapia especializada</strong>
+              <span>Trabalho de mobilidade, força, função e recuperação dos movimentos.</span>
+            </div>
+            <div class="therapy">
+              <strong>Proloterapia</strong>
+              <span>Técnica injetável usada em casos selecionados, conforme avaliação profissional.</span>
+            </div>
+            <div class="therapy">
+              <strong>PRP e Terapia Neural</strong>
+              <span>Recursos que podem fazer parte da estratégia terapêutica quando há indicação.</span>
+            </div>
+          </div>
+          <div class="thermal-note">
+            <strong>O mapa térmico entra como apoio, não como promessa.</strong>
+            A termografia ajuda a observar regiões que merecem atenção, enquanto a decisão clínica continua sendo individualizada.
+          </div>
+        </div>
+        <div class="panel">
+          <div class="steps">
+            <div class="step">
+              <span class="step-number" aria-hidden="true">1</span>
+              <h3>Avaliação individualizada</h3>
+              <p>Entendimento da dor, rotina, histórico, limitações e objetivos do paciente.</p>
+            </div>
+            <div class="step">
+              <span class="step-number" aria-hidden="true">2</span>
+              <h3>Plano de cuidado</h3>
+              <p>Combinação de recursos terapêuticos conforme necessidade e indicação.</p>
+            </div>
+            <div class="step">
+              <span class="step-number" aria-hidden="true">3</span>
+              <h3>Acompanhamento próximo</h3>
+              <p>A evolução é monitorada e a conduta pode ser ajustada conforme a resposta ao tratamento.</p>
+            </div>
+            <div class="step">
+              <span class="step-number" aria-hidden="true">4</span>
+              <h3>Continuidade com orientação</h3>
+              <p>O paciente recebe direcionamento para melhorar função, movimento e qualidade de vida.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Diferenciais</span>
+          <h2>Um cuidado que não trata apenas o sintoma</h2>
+          <p class="lead">A MELIORI combina conhecimento, tecnologia e acompanhamento humano para construir uma estratégia mais precisa e personalizada.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon">✓</div>
+            <h3>Foco no alívio e controle da dor</h3>
+            <p>O objetivo é ajudar o paciente a recuperar movimento, função e conforto dentro da sua realidade clínica.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✓</div>
+            <h3>Tratamento mais objetivo</h3>
+            <p>A conduta é planejada para buscar evolução eficiente, respeitando o tempo e a resposta individual.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✓</div>
+            <h3>Acompanhamento de perto</h3>
+            <p>Orientações, ajustes e monitoramento fazem parte do processo, evitando procedimentos isolados sem continuidade.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-content">
+        <div>
+          <span class="section-kicker">Agendamento</span>
+          <h2>Quer avaliar sua dor com uma equipe especializada?</h2>
+          <p>Fale com a MELIORI pelo WhatsApp e agende sua avaliação presencial na Savassi. O plano de tratamento é definido somente após avaliação profissional.</p>
+        </div>
+        <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container info-grid">
+        <div class="panel">
+          <span class="section-kicker">Contato</span>
+          <h2>Atendimento em Belo Horizonte</h2>
+          <p class="lead">A clínica atende presencialmente na região da Savassi, em Belo Horizonte.</p>
+          <div class="contact-list">
+            <div class="contact-row">
+              <strong>WhatsApp:</strong>
+              <a href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">(31) 99787-0707</a>
+            </div>
+            <div class="contact-row">
+              <strong>E-mail:</strong>
+              <a href="mailto:melioribh@gmail.com">melioribh@gmail.com</a>
+            </div>
+            <div class="contact-row">
+              <strong>Instagram:</strong>
+              <a href="https://www.instagram.com/meliorifisioterapia/" target="_blank" rel="noopener">@meliorifisioterapia</a>
+            </div>
+            <div class="contact-row">
+              <strong>Endereço:</strong>
+              <a href="https://www.google.com/maps/search/?api=1&query=Rua%20Alagoas%201314%20Sala%201014%20Savassi%20Belo%20Horizonte%20MG" target="_blank" rel="noopener">Rua Alagoas, 1314 - Sala 1014, Savassi, Belo Horizonte - MG</a>
+            </div>
+          </div>
+        </div>
+        <aside class="card">
+          <div class="icon">R$</div>
+          <h3>Investimento</h3>
+          <p>O tratamento é definido após avaliação. Conforme briefing, os planos podem partir de R$ 2.600, de acordo com a indicação e necessidade do paciente.</p>
+          <p><strong>Observação:</strong> resultados e condutas variam conforme cada caso e dependem de avaliação profissional.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>MELIORI - Clínica de fisioterapia especializada em artrose e dor</span>
+      <span>Conteúdo informativo. Atendimento mediante avaliação profissional.</span>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com a MELIORI no WhatsApp">W</a>
+</body>
+</html>
