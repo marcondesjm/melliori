@@ -594,38 +594,17 @@
     .work-photo {
       overflow: hidden;
       border-radius: 7px;
-      background: var(--paper);
+      background: var(--brown);
     }
 
     .work-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      animation: workPhotoDrift 12s ease-in-out infinite alternate;
-      transition: transform 550ms ease;
-      will-change: transform;
+      object-fit: contain;
     }
 
     .work-card:hover .work-photo img {
-      animation-play-state: paused;
-      transform: scale(1.035);
-    }
-
-    .work-card.medium .work-photo img {
-      animation-delay: -3s;
-    }
-
-    .work-card.small:nth-child(1) .work-photo img {
-      animation-delay: -1.5s;
-    }
-
-    .work-card.small:nth-child(2) .work-photo img {
-      animation-delay: -4.5s;
-    }
-
-    .work-card.small:nth-child(3) .work-photo img {
-      animation-delay: -6.5s;
+      transform: none;
     }
 
     @keyframes workPhotoDrift {
@@ -1299,40 +1278,31 @@
       .work-gallery,
       .work-stack,
       .work-mini-grid {
-        display: flex;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .work-gallery {
-        overflow-x: auto;
         width: 100%;
         max-width: 100%;
-        padding: 2px 8px 10px 0;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .work-stack,
-      .work-mini-grid {
-        display: contents;
+        overflow: visible;
+        padding: 0;
       }
 
       .work-card,
       .work-card.featured,
       .work-card.medium,
       .work-card.small {
-        flex: 0 0 min(78vw, 310px);
+        width: 100%;
         height: auto;
         min-height: 0;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
         transition: opacity 180ms ease, transform 180ms ease;
       }
 
       .work-card:not(.is-active) {
-        opacity: 0.72;
-        transform: scale(0.985);
+        opacity: 1;
+        transform: none;
       }
 
       .work-card.is-active {
@@ -1341,17 +1311,20 @@
       }
 
       .work-card.featured .work-photo {
-        height: min(116vw, 500px);
+        height: auto;
       }
 
       .work-card.medium .work-photo,
       .work-card.small .work-photo {
-        height: min(84vw, 350px);
+        height: auto;
         background: var(--brown);
       }
 
+      .work-card.featured .work-photo img,
       .work-card.medium .work-photo img,
       .work-card.small .work-photo img {
+        width: 100%;
+        height: auto;
         object-fit: contain;
         transform: none;
         animation: none;
@@ -1362,11 +1335,7 @@
       }
 
       .work-carousel-dots {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        margin-top: 12px;
+        display: none;
       }
 
       .work-carousel-dot {
