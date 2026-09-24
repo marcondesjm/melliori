@@ -673,6 +673,78 @@
       background: var(--paper);
     }
 
+    .floating-attendant {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 64px;
+      max-width: min(314px, calc(100vw - 36px));
+      padding: 9px 16px 9px 9px;
+      border: 1px solid rgba(149, 64, 28, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      box-shadow: 0 18px 48px rgba(56, 52, 49, 0.28);
+      backdrop-filter: blur(12px);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .floating-attendant:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 58px rgba(56, 52, 49, 0.34);
+    }
+
+    .floating-attendant:focus-visible {
+      outline: 3px solid var(--straw);
+      outline-offset: 4px;
+    }
+
+    .attendant-avatar {
+      position: relative;
+      flex: 0 0 50px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background:
+        url("assets/meliori-hero-doctor.png") 67% 16% / 410% auto no-repeat,
+        var(--paper);
+      box-shadow: inset 0 0 0 3px var(--sage);
+    }
+
+    .attendant-avatar::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      bottom: 2px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .attendant-text {
+      display: grid;
+      gap: 1px;
+    }
+
+    .attendant-text strong {
+      color: var(--brown);
+      font-size: 14px;
+      line-height: 1.1;
+    }
+
+    .attendant-text span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
     @media (max-width: 860px) {
       .nav {
         min-height: 76px;
@@ -771,6 +843,23 @@
 
       .instagram-card .button {
         width: 100%;
+      }
+
+      .floating-attendant {
+        right: 14px;
+        bottom: 14px;
+        min-height: 58px;
+        padding: 6px;
+      }
+
+      .attendant-avatar {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+      }
+
+      .attendant-text {
+        display: none;
       }
     }
 
@@ -1041,5 +1130,12 @@
     </div>
   </footer>
 
+  <a class="floating-attendant" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20falar%20com%20a%20atendente." target="_blank" rel="noopener" aria-label="Falar com a atendente da MELIORI pelo WhatsApp">
+    <span class="attendant-avatar" aria-hidden="true"></span>
+    <span class="attendant-text">
+      <strong>Fale com a atendente</strong>
+      <span>Responder pelo WhatsApp</span>
+    </span>
+  </a>
 </body>
 </html>
