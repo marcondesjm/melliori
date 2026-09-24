@@ -574,6 +574,10 @@
       align-items: start;
     }
 
+    .work-carousel-dots {
+      display: none;
+    }
+
     .work-card {
       position: relative;
       min-width: 0;
@@ -1263,8 +1267,10 @@
         overflow-x: auto;
         width: 100%;
         max-width: 100%;
-        padding-bottom: 10px;
-        scroll-snap-type: x proximity;
+        padding: 2px 8px 10px 0;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
       }
 
       .work-stack,
@@ -1280,6 +1286,18 @@
         height: auto;
         min-height: 0;
         scroll-snap-align: start;
+        scroll-snap-stop: always;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .work-card:not(.is-active) {
+        opacity: 0.72;
+        transform: scale(0.985);
+      }
+
+      .work-card.is-active {
+        opacity: 1;
+        transform: scale(1);
       }
 
       .work-card.featured .work-photo {
@@ -1293,6 +1311,30 @@
 
       .work-caption {
         padding: 0 2px 2px;
+      }
+
+      .work-carousel-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 12px;
+      }
+
+      .work-carousel-dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(56, 52, 49, 0.24);
+        cursor: pointer;
+        transition: width 180ms ease, background 180ms ease;
+      }
+
+      .work-carousel-dot.is-active {
+        width: 24px;
+        background: var(--rose-dark);
       }
 
       .hero-proof {
@@ -1353,13 +1395,13 @@
       .floating-attendant,
       .hero::before,
       .therapy-list,
-      .work-card img,
+      .work-photo img,
       .hero::after {
         animation: none;
       }
 
       .hero::before,
-      .work-card img,
+      .work-photo img,
       .hero::after {
         transform: none;
       }
@@ -1636,6 +1678,7 @@
             </div>
           </div>
         </div>
+        <div class="work-carousel-dots" aria-label="Navegação das amostras"></div>
       </div>
     </section>
 
@@ -1724,6 +1767,9 @@
   <script>
     const menuToggle = document.querySelector(".menu-toggle");
     const menuLinks = document.querySelectorAll(".nav-links a");
+    const workGallery = document.querySelector(".work-gallery");
+    const workCards = workGallery ? Array.from(workGallery.querySelectorAll(".work-card")) : [];
+    const workDots = document.querySelector(".work-carousel-dots");
 
     function setMenu(open) {
       document.body.classList.toggle("menu-open", open);
@@ -1744,6 +1790,55 @@
         setMenu(false);
       }
     });
+
+    function setActiveWorkCard(index) {
+      workCards.forEach((card, cardIndex) => {
+        card.classList.toggle("is-active", cardIndex === index);
+      });
+
+      workDots?.querySelectorAll(".work-carousel-dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+        dot.setAttribute("aria-current", dotIndex === index ? "true" : "false");
+      });
+    }
+
+    if (workGallery && workDots && workCards.length) {
+      workCards.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "work-carousel-dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Ver amostra ${index + 1}`);
+        dot.addEventListener("click", () => {
+          workCards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+          setActiveWorkCard(index);
+        });
+        workDots.appendChild(dot);
+      });
+
+      let activeWorkIndex = 0;
+      let workScrollTimer;
+
+      function updateWorkActiveFromScroll() {
+        const galleryLeft = workGallery.getBoundingClientRect().left;
+        const nextIndex = workCards.reduce((bestIndex, card, index) => {
+          const bestDistance = Math.abs(workCards[bestIndex].getBoundingClientRect().left - galleryLeft);
+          const distance = Math.abs(card.getBoundingClientRect().left - galleryLeft);
+          return distance < bestDistance ? index : bestIndex;
+        }, 0);
+
+        if (nextIndex !== activeWorkIndex) {
+          activeWorkIndex = nextIndex;
+          setActiveWorkCard(activeWorkIndex);
+        }
+      }
+
+      workGallery.addEventListener("scroll", () => {
+        window.clearTimeout(workScrollTimer);
+        workScrollTimer = window.setTimeout(updateWorkActiveFromScroll, 80);
+      }, { passive: true });
+
+      setActiveWorkCard(0);
+    }
   </script>
 </body>
 </html>
