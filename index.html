@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MELIORI | Tratamento para dor e artrose em Belo Horizonte</title>
   <meta name="description" content="Clínica de fisioterapia especializada em dor ortopédica e artrose em Belo Horizonte. Avaliação individualizada, termografia e plano de cuidado personalizado.">
+  <link rel="icon" type="image/jpeg" href="assets/brand/meliori-mark.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -101,16 +102,16 @@
       letter-spacing: 0;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.58);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.16);
-      font-family: var(--font-display);
-      font-size: 22px;
+    .brand-logo {
+      width: 178px;
+      height: 52px;
+      display: block;
+      object-fit: contain;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 30px rgba(56, 52, 49, 0.16);
     }
 
     .nav-links {
@@ -585,9 +586,24 @@
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 24px;
       flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-mark {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--paper);
     }
 
     .floating-whatsapp {
@@ -610,6 +626,12 @@
     @media (max-width: 860px) {
       .nav {
         min-height: 64px;
+      }
+
+      .brand-logo {
+        width: 146px;
+        height: 46px;
+        padding: 6px 10px;
       }
 
       .nav-links {
@@ -689,6 +711,10 @@
         padding: 22px;
       }
 
+      .footer-inner {
+        align-items: flex-start;
+      }
+
       .cta-content .button {
         width: 100%;
       }
@@ -704,8 +730,7 @@
     </div>
     <nav class="nav" aria-label="Navegação principal">
       <a class="brand" href="#inicio" aria-label="MELIORI">
-        <span class="brand-mark">M</span>
-        <span>MELIORI</span>
+        <img class="brand-logo" src="assets/brand/meliori-logo-full.jpg" alt="Meliori Fisioterapia Regenerativa">
       </a>
       <div class="nav-links">
         <a href="#condicoes">Condições</a>
@@ -940,7 +965,10 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <span>MELIORI - Clínica de fisioterapia especializada em artrose e dor</span>
+      <span class="footer-brand">
+        <img class="footer-mark" src="assets/brand/meliori-mark.jpg" alt="" aria-hidden="true">
+        <span>MELIORI - Clínica de fisioterapia especializada em artrose e dor</span>
+      </span>
       <span>Conteúdo informativo. Atendimento mediante avaliação profissional.</span>
     </div>
   </footer>
