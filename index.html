@@ -10,18 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #2f2926;
-      --muted: #6d625c;
-      --paper: #fffaf5;
-      --surface: #f5eee6;
-      --rose: #b47d74;
-      --rose-dark: #87574f;
-      --straw: #d8bf93;
-      --brown: #6d5142;
-      --sage: #6f8074;
+      --ink: #383431;
+      --muted: rgba(56, 52, 49, 0.72);
+      --paper: #DED6C8;
+      --surface: rgba(222, 214, 200, 0.62);
+      --rose: #95401C;
+      --rose-dark: #95401C;
+      --straw: #BD9965;
+      --brown: #383431;
+      --sage: #A7B8A6;
       --white: #ffffff;
-      --line: rgba(47, 41, 38, 0.14);
-      --shadow: 0 22px 60px rgba(63, 43, 33, 0.18);
+      --line: rgba(56, 52, 49, 0.16);
+      --shadow: 0 22px 60px rgba(56, 52, 49, 0.2);
       --font-body: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-display: "NT Fabulous", "Playfair Display", Georgia, serif;
     }
@@ -59,7 +59,7 @@
       left: 0;
       right: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(47, 41, 38, 0.42);
+      background: rgba(56, 52, 49, 0.56);
       color: var(--white);
       backdrop-filter: blur(18px);
     }
@@ -133,14 +133,14 @@
       background: var(--rose-dark);
       color: var(--white);
       font-weight: 800;
-      box-shadow: 0 14px 28px rgba(96, 56, 47, 0.22);
+      box-shadow: 0 14px 28px rgba(149, 64, 28, 0.22);
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      background: #754942;
-      box-shadow: 0 18px 34px rgba(96, 56, 47, 0.3);
+      background: var(--brown);
+      box-shadow: 0 18px 34px rgba(56, 52, 49, 0.28);
     }
 
     .button:focus-visible,
@@ -160,7 +160,7 @@
 
     .button.secondary-dark {
       background: transparent;
-      border-color: rgba(135, 87, 79, 0.34);
+      border-color: rgba(149, 64, 28, 0.36);
       color: var(--rose-dark);
       box-shadow: none;
     }
@@ -173,8 +173,8 @@
       color: var(--white);
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(28, 21, 17, 0.78), rgba(28, 21, 17, 0.46) 47%, rgba(28, 21, 17, 0.18)),
-        linear-gradient(0deg, rgba(47, 41, 38, 0.7), rgba(47, 41, 38, 0.04) 42%),
+        linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
+        linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
         url("assets/meliori-hero.png") center / cover no-repeat;
     }
 
@@ -189,7 +189,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 18px;
-      color: #fff3e5;
+      color: var(--paper);
       font-size: 15px;
       font-weight: 800;
     }
@@ -415,7 +415,7 @@
       place-items: center;
       margin-bottom: 18px;
       border-radius: 8px;
-      background: rgba(180, 125, 116, 0.14);
+      background: rgba(149, 64, 28, 0.11);
       color: var(--rose-dark);
       font-size: 13px;
       font-weight: 900;
@@ -433,7 +433,7 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--white);
-      box-shadow: 0 18px 42px rgba(83, 63, 52, 0.08);
+      box-shadow: 0 18px 42px rgba(56, 52, 49, 0.1);
     }
 
     .steps {
@@ -490,10 +490,10 @@
       position: relative;
       margin-top: 24px;
       padding: 22px 24px 22px 78px;
-      border: 1px solid rgba(111, 128, 116, 0.22);
+      border: 1px solid rgba(167, 184, 166, 0.42);
       border-radius: 8px;
       background:
-        linear-gradient(90deg, rgba(111, 128, 116, 0.16), rgba(216, 191, 147, 0.08)),
+        linear-gradient(90deg, rgba(167, 184, 166, 0.22), rgba(189, 153, 101, 0.14)),
         rgba(255, 255, 255, 0.72);
       color: var(--muted);
     }
@@ -507,8 +507,8 @@
       height: 54px;
       border-radius: 18px;
       background:
-        radial-gradient(circle at 50% 78%, #b47d74 0 28%, transparent 30%),
-        linear-gradient(180deg, #6f8074 0%, #d8bf93 54%, #b47d74 100%);
+        radial-gradient(circle at 50% 78%, #95401C 0 28%, transparent 30%),
+        linear-gradient(180deg, #A7B8A6 0%, #BD9965 54%, #95401C 100%);
       box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.75);
     }
 
@@ -531,7 +531,7 @@
 
     .cta-band {
       background:
-        linear-gradient(120deg, rgba(47, 41, 38, 0.94), rgba(109, 81, 66, 0.88)),
+        linear-gradient(120deg, rgba(56, 52, 49, 0.95), rgba(149, 64, 28, 0.76)),
         url("assets/meliori-hero.png") center / cover no-repeat;
       color: var(--white);
     }
@@ -576,7 +576,7 @@
 
     .footer {
       padding: 34px 0;
-      background: #2f2926;
+      background: var(--brown);
       color: rgba(255, 255, 255, 0.74);
       font-size: 14px;
     }
@@ -600,9 +600,9 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: #2ea46f;
-      color: var(--white);
-      box-shadow: 0 16px 34px rgba(33, 104, 72, 0.32);
+      background: var(--sage);
+      color: var(--brown);
+      box-shadow: 0 16px 34px rgba(56, 52, 49, 0.24);
       font-size: 26px;
       font-weight: 900;
     }
