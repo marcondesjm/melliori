@@ -654,6 +654,10 @@
       align-items: center;
     }
 
+    .split > * {
+      min-width: 0;
+    }
+
     .panel {
       padding: 34px;
       border: 1px solid var(--line);
@@ -1094,8 +1098,7 @@
       .cta-content,
       .info-grid,
       .care-board,
-      .booking-options,
-      .therapy-list {
+      .booking-options {
         grid-template-columns: 1fr;
       }
 
@@ -1120,6 +1123,35 @@
       .condition {
         flex: 0 0 210px;
         scroll-snap-align: start;
+      }
+
+      .therapy-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+        width: min(100%, calc(100vw - 32px));
+        max-width: calc(100vw - 32px);
+        padding: 2px 16px 12px 0;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        animation: therapyTrackCue 1050ms ease 700ms 1 both;
+      }
+
+      .therapy {
+        flex: 0 0 min(78vw, 304px);
+        min-height: 184px;
+        scroll-snap-align: start;
+      }
+
+      @keyframes therapyTrackCue {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+
+        45% {
+          transform: translateX(-14px);
+        }
       }
 
       .work-gallery,
@@ -1222,6 +1254,7 @@
     @media (prefers-reduced-motion: reduce) {
       .floating-attendant,
       .hero::before,
+      .therapy-list,
       .work-card img,
       .hero::after {
         animation: none;
