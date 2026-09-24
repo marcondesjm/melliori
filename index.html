@@ -195,6 +195,27 @@
       white-space: nowrap;
     }
 
+    .nav-links a:not(.button) {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(56, 52, 49, 0.28);
+      color: rgba(255, 255, 255, 0.96);
+      text-shadow: 0 1px 12px rgba(56, 52, 49, 0.42);
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .nav-links a:not(.button):hover {
+      border-color: rgba(189, 153, 101, 0.62);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--rose-dark);
+      text-shadow: none;
+      transform: translateY(-1px);
+    }
+
     .nav-links .button {
       flex: 0 0 auto;
     }
@@ -298,7 +319,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-position: center;
+      background-position: center 36%;
       background-size: cover;
       background-repeat: no-repeat;
       transform: scale(1.02);
@@ -320,6 +341,7 @@
       z-index: 1;
       opacity: 0;
       animation: heroImageSwap 14s ease-in-out infinite, heroImageDriftAlt 20s ease-in-out infinite alternate;
+      background-position: center 32%;
       background-image:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
@@ -417,20 +439,20 @@
     .hero-scroll-cue {
       position: absolute;
       left: 50%;
-      bottom: 24px;
+      bottom: 54px;
       z-index: 3;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(56, 52, 49, 0.52);
       color: var(--white);
       transform: translateX(-50%);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-      animation: heroCueBounce 1.8s ease-in-out infinite;
+      animation: heroCueBounce 2.2s ease-in-out infinite;
     }
 
     .hero-scroll-cue::before {
@@ -443,9 +465,9 @@
     }
 
     .hero-scroll-cue:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.7);
-      transform: translateX(-50%) translateY(2px);
+      background: rgba(149, 64, 28, 0.9);
+      border-color: rgba(255, 255, 255, 0.72);
+      transform: translateX(-50%) translateY(3px);
     }
 
     @keyframes heroCueBounce {
@@ -1253,7 +1275,7 @@
       }
 
       .nav-links a:not(.button):hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.92);
       }
 
       .nav-links .button {
@@ -1267,7 +1289,7 @@
       }
 
       .hero::before {
-        background-position: 53% top;
+        background-position: 53% 22%;
         transform: scale(1.01);
         background-image:
           linear-gradient(90deg, rgba(56, 52, 49, 0.66), rgba(56, 52, 49, 0.38) 56%, rgba(56, 52, 49, 0.08)),
@@ -1316,9 +1338,9 @@
       }
 
       .hero-scroll-cue {
-        bottom: max(18px, env(safe-area-inset-bottom));
-        width: 42px;
-        height: 42px;
+        bottom: max(58px, calc(env(safe-area-inset-bottom) + 44px));
+        width: 40px;
+        height: 40px;
       }
 
       .hero-proof,
