@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MELIORI | Tratamento para dor e artrose em Belo Horizonte</title>
   <meta name="description" content="Clínica de fisioterapia especializada em dor ortopédica e artrose em Belo Horizonte. Avaliação individualizada, termografia e plano de cuidado personalizado.">
-  <link rel="icon" type="image/jpeg" href="assets/brand/meliori-mark.jpg">
+  <link rel="icon" type="image/jpeg" href="assets/brand/meliori-mark-cropped.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -65,32 +65,9 @@
       backdrop-filter: blur(18px);
     }
 
-    .top-strip {
-      width: min(1180px, calc(100% - 32px));
-      min-height: 38px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .top-strip span,
-    .top-strip a {
-      white-space: nowrap;
-    }
-
-    .top-social {
-      color: var(--straw);
-    }
-
     .nav {
       width: min(1180px, calc(100% - 32px));
-      min-height: 72px;
+      min-height: 88px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -107,15 +84,15 @@
     }
 
     .brand-logo {
-      width: 178px;
-      height: 52px;
+      width: 250px;
+      height: 70px;
       display: block;
       object-fit: contain;
-      padding: 7px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 12px 30px rgba(56, 52, 49, 0.16);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 34px rgba(56, 52, 49, 0.18);
     }
 
     .nav-links {
@@ -150,9 +127,7 @@
 
     .button:focus-visible,
     .nav a:focus-visible,
-    .top-strip a:focus-visible,
-    .contact-row a:focus-visible,
-    .floating-whatsapp:focus-visible {
+    .contact-row a:focus-visible {
       outline: 3px solid var(--straw);
       outline-offset: 4px;
     }
@@ -180,13 +155,13 @@
       background:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
-        url("assets/meliori-hero.png") center / cover no-repeat;
+        url("assets/meliori-hero-doctor.png") center / cover no-repeat;
     }
 
     .hero-inner {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 154px 0 72px;
+      padding: 126px 0 72px;
     }
 
     .eyebrow {
@@ -537,7 +512,7 @@
     .cta-band {
       background:
         linear-gradient(120deg, rgba(56, 52, 49, 0.95), rgba(149, 64, 28, 0.76)),
-        url("assets/meliori-hero.png") center / cover no-repeat;
+        url("assets/meliori-hero-doctor.png") center / cover no-repeat;
       color: var(--white);
     }
 
@@ -654,32 +629,15 @@
       background: var(--paper);
     }
 
-    .floating-whatsapp {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 30;
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--sage);
-      color: var(--brown);
-      box-shadow: 0 16px 34px rgba(56, 52, 49, 0.24);
-      font-size: 26px;
-      font-weight: 900;
-    }
-
     @media (max-width: 860px) {
       .nav {
-        min-height: 64px;
+        min-height: 76px;
       }
 
       .brand-logo {
-        width: 146px;
-        height: 46px;
-        padding: 6px 10px;
+        width: 196px;
+        height: 58px;
+        padding: 7px 12px;
       }
 
       .nav-links {
@@ -688,11 +646,11 @@
 
       .hero {
         min-height: 74vh;
-        background-position: 58% center;
+        background-position: 61% center;
       }
 
       .hero-inner {
-        padding-top: 132px;
+        padding-top: 108px;
         padding-bottom: 34px;
       }
 
@@ -715,20 +673,6 @@
       .booking-options,
       .therapy-list {
         grid-template-columns: 1fr;
-      }
-
-      .top-strip {
-        justify-content: center;
-        min-height: 34px;
-        overflow: hidden;
-      }
-
-      .top-strip span {
-        display: none;
-      }
-
-      .top-strip .email-link {
-        display: none;
       }
 
       .reference-flow {
@@ -784,15 +728,9 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="top-strip" aria-label="Contato rápido">
-      <a href="tel:+5531997870707">(31) 99787-0707</a>
-      <span>Rua Alagoas, 1314 - Sala 1014, Savassi</span>
-      <a class="email-link" href="mailto:melioribh@gmail.com">melioribh@gmail.com</a>
-      <a class="top-social" href="https://www.instagram.com/meliorifisioterapia/" target="_blank" rel="noopener">@meliorifisioterapia</a>
-    </div>
     <nav class="nav" aria-label="Navegação principal">
       <a class="brand" href="#inicio" aria-label="MELIORI">
-        <img class="brand-logo" src="assets/brand/meliori-logo-full.jpg" alt="Meliori Fisioterapia Regenerativa">
+        <img class="brand-logo" src="assets/brand/meliori-logo-full-cropped.jpg" alt="Meliori Fisioterapia Regenerativa">
       </a>
       <div class="nav-links">
         <a href="#condicoes">Condições</a>
@@ -1040,13 +978,12 @@
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-brand">
-        <img class="footer-mark" src="assets/brand/meliori-mark.jpg" alt="" aria-hidden="true">
+        <img class="footer-mark" src="assets/brand/meliori-mark-cropped.jpg" alt="" aria-hidden="true">
         <span>MELIORI - Clínica de fisioterapia especializada em artrose e dor</span>
       </span>
       <span>Conteúdo informativo. Atendimento mediante avaliação profissional.</span>
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com a MELIORI no WhatsApp">W</a>
 </body>
 </html>
