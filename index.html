@@ -491,14 +491,21 @@
       position: relative;
       min-width: 0;
       margin: 0;
-      overflow: hidden;
+      display: grid;
+      gap: 10px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--paper);
+      background: var(--white);
       box-shadow: 0 18px 42px rgba(56, 52, 49, 0.12);
     }
 
-    .work-card img {
+    .work-photo {
+      overflow: hidden;
+      border-radius: 7px;
+      background: var(--paper);
+    }
+
+    .work-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -508,24 +515,24 @@
       will-change: transform;
     }
 
-    .work-card:hover img {
+    .work-card:hover .work-photo img {
       animation-play-state: paused;
       transform: scale(1.035);
     }
 
-    .work-card.medium img {
+    .work-card.medium .work-photo img {
       animation-delay: -3s;
     }
 
-    .work-card.small:nth-child(1) img {
+    .work-card.small:nth-child(1) .work-photo img {
       animation-delay: -1.5s;
     }
 
-    .work-card.small:nth-child(2) img {
+    .work-card.small:nth-child(2) .work-photo img {
       animation-delay: -4.5s;
     }
 
-    .work-card.small:nth-child(3) img {
+    .work-card.small:nth-child(3) .work-photo img {
       animation-delay: -6.5s;
     }
 
@@ -539,7 +546,7 @@
       }
     }
 
-    .work-card.featured {
+    .work-card.featured .work-photo {
       height: 638px;
     }
 
@@ -548,7 +555,7 @@
       gap: 18px;
     }
 
-    .work-card.medium {
+    .work-card.medium .work-photo {
       height: 360px;
     }
 
@@ -558,21 +565,13 @@
       gap: 18px;
     }
 
-    .work-card.small {
+    .work-card.small .work-photo {
       height: 260px;
     }
 
     .work-caption {
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      padding: 14px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 8px;
-      background: rgba(56, 52, 49, 0.76);
-      color: var(--white);
-      backdrop-filter: blur(14px);
+      padding: 2px 4px 0;
+      color: var(--ink);
     }
 
     .work-caption strong,
@@ -581,13 +580,14 @@
     }
 
     .work-caption strong {
+      color: var(--rose-dark);
       font-size: 16px;
       line-height: 1.2;
     }
 
     .work-caption span {
       margin-top: 5px;
-      color: rgba(255, 255, 255, 0.74);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 600;
       line-height: 1.35;
@@ -1148,20 +1148,21 @@
       .work-card.small {
         flex: 0 0 min(78vw, 310px);
         height: auto;
-        min-height: 390px;
+        min-height: 0;
         scroll-snap-align: start;
       }
 
-      .work-card.medium,
-      .work-card.small {
-        min-height: 300px;
+      .work-card.featured .work-photo {
+        height: 390px;
+      }
+
+      .work-card.medium .work-photo,
+      .work-card.small .work-photo {
+        height: 260px;
       }
 
       .work-caption {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        padding: 12px;
+        padding: 0 2px 2px;
       }
 
       .hero-proof {
@@ -1451,7 +1452,9 @@
 
         <div class="work-gallery" aria-label="Galeria de amostras do trabalho da MELIORI">
           <figure class="work-card featured">
-            <img src="assets/work-samples/termografia-rizoartrose-polegar.jpeg" alt="Registro termográfico de acompanhamento de rizoartrose de polegar">
+            <div class="work-photo">
+              <img src="assets/work-samples/termografia-rizoartrose-polegar.jpeg" alt="Registro termográfico de acompanhamento de rizoartrose de polegar">
+            </div>
             <figcaption class="work-caption">
               <strong>Termografia no acompanhamento</strong>
               <span>Comparativos ajudam a visualizar pontos de atenção durante o cuidado.</span>
@@ -1460,7 +1463,9 @@
 
           <div class="work-stack">
             <figure class="work-card medium">
-              <img src="assets/work-samples/termografia-antes-depois-coluna.jpeg" alt="Comparativo termográfico de acompanhamento de dor na região cervical e torácica">
+              <div class="work-photo">
+                <img src="assets/work-samples/termografia-antes-depois-coluna.jpeg" alt="Comparativo termográfico de acompanhamento de dor na região cervical e torácica">
+              </div>
               <figcaption class="work-caption">
                 <strong>Comparativo visual</strong>
                 <span>Registros auxiliam a acompanhar áreas relatadas no processo terapêutico.</span>
@@ -1469,7 +1474,9 @@
 
             <div class="work-mini-grid">
               <figure class="work-card small">
-                <img src="assets/work-samples/avaliacao-termografica.jpeg" alt="Profissional utilizando câmera termográfica durante avaliação">
+                <div class="work-photo">
+                  <img src="assets/work-samples/avaliacao-termografica.jpeg" alt="Profissional utilizando câmera termográfica durante avaliação">
+                </div>
                 <figcaption class="work-caption">
                   <strong>Avaliação com tecnologia</strong>
                   <span>Recursos visuais apoiam uma leitura mais objetiva do quadro.</span>
@@ -1477,7 +1484,9 @@
               </figure>
 
               <figure class="work-card small">
-                <img src="assets/work-samples/consultorio-termografia.jpeg" alt="Consultório da MELIORI com maca e equipamento de termografia">
+                <div class="work-photo">
+                  <img src="assets/work-samples/consultorio-termografia.jpeg" alt="Consultório da MELIORI com maca e equipamento de termografia">
+                </div>
                 <figcaption class="work-caption">
                   <strong>Consultório equipado</strong>
                   <span>Estrutura para avaliação e atendimento presencial.</span>
@@ -1485,7 +1494,9 @@
               </figure>
 
               <figure class="work-card small">
-                <img src="assets/work-samples/sala-atendimento-meliori.jpeg" alt="Sala de atendimento da MELIORI com mesa, monitor e maca">
+                <div class="work-photo">
+                  <img src="assets/work-samples/sala-atendimento-meliori.jpeg" alt="Sala de atendimento da MELIORI com mesa, monitor e maca">
+                </div>
                 <figcaption class="work-caption">
                   <strong>Ambiente de cuidado</strong>
                   <span>Espaço reservado para escuta, exame e orientação.</span>
