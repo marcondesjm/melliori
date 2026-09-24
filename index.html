@@ -365,6 +365,25 @@
       font-size: 18px;
     }
 
+    .section-head.with-action {
+      max-width: none;
+      display: grid;
+      grid-template-columns: minmax(0, 760px) auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .section-note {
+      max-width: 330px;
+      margin: 0;
+      padding: 14px 16px;
+      border-left: 3px solid var(--straw);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
     .grid {
       display: grid;
       gap: 18px;
@@ -431,6 +450,93 @@
       background: var(--white);
       color: var(--brown);
       font-weight: 800;
+    }
+
+    .work-showcase {
+      background: var(--white);
+    }
+
+    .work-gallery {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .work-card {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 18px 42px rgba(56, 52, 49, 0.12);
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 550ms ease;
+    }
+
+    .work-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .work-card.featured {
+      height: 638px;
+    }
+
+    .work-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .work-card.medium {
+      height: 360px;
+    }
+
+    .work-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .work-card.small {
+      height: 260px;
+    }
+
+    .work-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 8px;
+      background: rgba(56, 52, 49, 0.76);
+      color: var(--white);
+      backdrop-filter: blur(14px);
+    }
+
+    .work-caption strong,
+    .work-caption span {
+      display: block;
+    }
+
+    .work-caption strong {
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .work-caption span {
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
     }
 
     .booking-options {
@@ -930,12 +1036,17 @@
       .grid-3,
       .grid-2,
       .split,
+      .section-head.with-action,
       .cta-content,
       .info-grid,
       .care-board,
       .booking-options,
       .therapy-list {
         grid-template-columns: 1fr;
+      }
+
+      .section-note {
+        max-width: none;
       }
 
       .reference-flow {
@@ -955,6 +1066,48 @@
       .condition {
         flex: 0 0 210px;
         scroll-snap-align: start;
+      }
+
+      .work-gallery,
+      .work-stack,
+      .work-mini-grid {
+        display: flex;
+        gap: 12px;
+      }
+
+      .work-gallery {
+        overflow-x: auto;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 10px;
+        scroll-snap-type: x proximity;
+      }
+
+      .work-stack,
+      .work-mini-grid {
+        display: contents;
+      }
+
+      .work-card,
+      .work-card.featured,
+      .work-card.medium,
+      .work-card.small {
+        flex: 0 0 min(78vw, 310px);
+        height: auto;
+        min-height: 390px;
+        scroll-snap-align: start;
+      }
+
+      .work-card.medium,
+      .work-card.small {
+        min-height: 300px;
+      }
+
+      .work-caption {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        padding: 12px;
       }
 
       .hero-proof {
@@ -1040,6 +1193,7 @@
         <a href="#condicoes">Condições</a>
         <a href="#tratamento">Tratamento</a>
         <a href="#como-funciona">Como funciona</a>
+        <a href="#amostras">Amostras</a>
         <a href="https://www.instagram.com/meliorifisioterapia/" target="_blank" rel="noopener">Instagram</a>
         <a href="#contato">Contato</a>
         <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">WhatsApp</a>
@@ -1218,6 +1372,65 @@
             <h3>Acompanhamento de perto</h3>
             <p>Orientações, ajustes e monitoramento fazem parte do processo, evitando procedimentos isolados sem continuidade.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-showcase" id="amostras">
+      <div class="container">
+        <div class="section-head with-action">
+          <div>
+            <span class="section-kicker">Amostras do trabalho</span>
+            <h2>Registros reais do acompanhamento na MELIORI</h2>
+            <p class="lead">Termografia, avaliação funcional e ambiente preparado para um cuidado próximo, objetivo e acompanhado de perto.</p>
+          </div>
+          <p class="section-note">As imagens ilustram recursos usados no acompanhamento. Cada plano depende da avaliação profissional e da resposta individual do paciente.</p>
+        </div>
+
+        <div class="work-gallery" aria-label="Galeria de amostras do trabalho da MELIORI">
+          <figure class="work-card featured">
+            <img src="assets/work-samples/termografia-rizoartrose-polegar.jpeg" alt="Registro termográfico de acompanhamento de rizoartrose de polegar">
+            <figcaption class="work-caption">
+              <strong>Termografia no acompanhamento</strong>
+              <span>Comparativos ajudam a visualizar pontos de atenção durante o cuidado.</span>
+            </figcaption>
+          </figure>
+
+          <div class="work-stack">
+            <figure class="work-card medium">
+              <img src="assets/work-samples/termografia-antes-depois-coluna.jpeg" alt="Comparativo termográfico de acompanhamento de dor na região cervical e torácica">
+              <figcaption class="work-caption">
+                <strong>Comparativo visual</strong>
+                <span>Registros auxiliam a acompanhar áreas relatadas no processo terapêutico.</span>
+              </figcaption>
+            </figure>
+
+            <div class="work-mini-grid">
+              <figure class="work-card small">
+                <img src="assets/work-samples/avaliacao-termografica.jpeg" alt="Profissional utilizando câmera termográfica durante avaliação">
+                <figcaption class="work-caption">
+                  <strong>Avaliação com tecnologia</strong>
+                  <span>Recursos visuais apoiam uma leitura mais objetiva do quadro.</span>
+                </figcaption>
+              </figure>
+
+              <figure class="work-card small">
+                <img src="assets/work-samples/consultorio-termografia.jpeg" alt="Consultório da MELIORI com maca e equipamento de termografia">
+                <figcaption class="work-caption">
+                  <strong>Consultório equipado</strong>
+                  <span>Estrutura para avaliação e atendimento presencial.</span>
+                </figcaption>
+              </figure>
+
+              <figure class="work-card small">
+                <img src="assets/work-samples/sala-atendimento-meliori.jpeg" alt="Sala de atendimento da MELIORI com mesa, monitor e maca">
+                <figcaption class="work-caption">
+                  <strong>Ambiente de cuidado</strong>
+                  <span>Espaço reservado para escuta, exame e orientação.</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
       </div>
     </section>
