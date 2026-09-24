@@ -610,7 +610,10 @@
     }
 
     .care-intro h2 {
+      max-width: 9.5ch;
       color: var(--white);
+      font-size: clamp(38px, 4vw, 52px);
+      line-height: 0.98;
     }
 
     .care-intro .section-kicker {
@@ -673,6 +676,7 @@
     .work-photo {
       overflow: hidden;
       background: var(--brown);
+      cursor: zoom-in;
     }
 
     .work-photo img {
@@ -1448,8 +1452,9 @@
 
       .work-card.medium .work-photo,
       .work-card.small .work-photo {
+        aspect-ratio: auto;
         height: auto;
-        background: var(--brown);
+        background: transparent;
       }
 
       .work-card.featured .work-photo img,
@@ -1951,6 +1956,7 @@
     const menuLinks = document.querySelectorAll(".nav-links a");
     const workGallery = document.querySelector(".work-gallery");
     const workCards = workGallery ? Array.from(workGallery.querySelectorAll(".work-card")) : [];
+    const workImages = workGallery ? Array.from(workGallery.querySelectorAll(".work-photo img")) : [];
     const workDots = document.querySelector(".work-carousel-dots");
     const motionCards = document.querySelectorAll(".proof-item, .condition, .booking-card, .card, .therapy, .step, .work-card, .instagram-card, .panel");
     const hero = document.querySelector(".hero");
@@ -1983,6 +1989,24 @@
 
     updateAttendantVisibility();
     window.addEventListener("scroll", updateAttendantVisibility, { passive: true });
+
+    workImages.forEach((image) => {
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("title", "Abrir imagem");
+
+      function openImage() {
+        window.open(image.currentSrc || image.src, "_blank", "noopener");
+      }
+
+      image.addEventListener("click", openImage);
+      image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openImage();
+        }
+      });
+    });
 
     function setActiveWorkCard(index) {
       workCards.forEach((card, cardIndex) => {
