@@ -547,7 +547,18 @@
     }
 
     .work-card.featured .work-photo {
-      height: 638px;
+      height: 720px;
+      background: var(--brown);
+    }
+
+    .work-card.featured .work-photo img {
+      object-fit: contain;
+      animation: none;
+      transform: none;
+    }
+
+    .work-card.featured:hover .work-photo img {
+      transform: none;
     }
 
     .work-stack {
@@ -1185,7 +1196,7 @@
       }
 
       .work-card.featured .work-photo {
-        height: 390px;
+        height: 455px;
       }
 
       .work-card.medium .work-photo,
