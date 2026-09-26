@@ -1289,7 +1289,7 @@
     .cta-band {
       position: relative;
       overflow: hidden;
-      padding: 92px 0;
+      padding: 86px 0 96px;
       color: var(--white);
       background: #383431;
     }
@@ -1300,7 +1300,7 @@
       inset: 0;
       background: url("assets/agendamento-bg.webp") right center / cover no-repeat;
       z-index: 0;
-      opacity: 0.54;
+      opacity: 0.68;
       animation: ctaBgPan 24s ease-in-out infinite alternate;
       will-change: transform;
     }
@@ -1311,8 +1311,8 @@
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(56, 52, 49, 0.98) 0%, rgba(56, 52, 49, 0.94) 36%, rgba(56, 52, 49, 0.68) 62%, rgba(56, 52, 49, 0.34) 100%),
-        linear-gradient(0deg, rgba(149, 64, 28, 0.24), rgba(149, 64, 28, 0.1));
+        linear-gradient(90deg, rgba(56, 52, 49, 0.94) 0%, rgba(56, 52, 49, 0.82) 34%, rgba(56, 52, 49, 0.44) 66%, rgba(56, 52, 49, 0.12) 100%),
+        linear-gradient(0deg, rgba(149, 64, 28, 0.16), rgba(149, 64, 28, 0.04));
       pointer-events: none;
     }
 
@@ -1332,24 +1332,24 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 620px);
-      gap: 24px;
+      grid-template-columns: minmax(0, 560px);
+      gap: 18px;
       align-items: start;
     }
 
     .cta-content h2 {
       max-width: 11ch;
       margin: 0;
-      font-size: clamp(46px, 5.2vw, 72px);
-      line-height: 0.96;
+      font-size: clamp(42px, 4.6vw, 64px);
+      line-height: 1;
     }
 
     .cta-content p {
       max-width: 520px;
       margin: 0;
       color: rgba(255, 255, 255, 0.84);
-      font-size: clamp(17px, 1.4vw, 20px);
-      line-height: 1.55;
+      font-size: clamp(16px, 1.25vw, 18px);
+      line-height: 1.48;
     }
 
     .cta-actions {
@@ -1804,28 +1804,36 @@
       }
 
       .cta-band {
-        padding: 78px 0;
+        min-height: 560px;
+        padding: 58px 0 240px;
       }
 
       .cta-band::before {
-        background-position: right bottom;
-        background-size: 118% auto;
-        opacity: 0.34;
+        background-position: 64% bottom;
+        background-size: auto 100%;
+        opacity: 0.78;
       }
 
       .cta-band::after {
         background:
-          linear-gradient(180deg, rgba(56, 52, 49, 0.97) 0%, rgba(56, 52, 49, 0.9) 58%, rgba(56, 52, 49, 0.68) 100%),
-          linear-gradient(0deg, rgba(149, 64, 28, 0.22), rgba(149, 64, 28, 0.08));
+          linear-gradient(180deg, rgba(56, 52, 49, 0.96) 0%, rgba(56, 52, 49, 0.86) 42%, rgba(56, 52, 49, 0.3) 70%, rgba(56, 52, 49, 0.02) 100%),
+          linear-gradient(0deg, rgba(149, 64, 28, 0.12), rgba(149, 64, 28, 0.02));
+      }
+
+      .cta-content {
+        gap: 14px;
       }
 
       .cta-content h2 {
-        max-width: 10ch;
-        font-size: clamp(40px, 12vw, 54px);
+        max-width: 11ch;
+        font-size: clamp(38px, 10.2vw, 48px);
+        line-height: 1.02;
       }
 
       .cta-content p {
-        max-width: 32rem;
+        max-width: 28rem;
+        font-size: 16px;
+        line-height: 1.45;
       }
 
       .section-note {
@@ -2007,7 +2015,8 @@
       }
 
       .cta-content .button {
-        width: 100%;
+        width: auto;
+        min-width: min(100%, 230px);
       }
 
       .instagram-card {
