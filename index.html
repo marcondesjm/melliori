@@ -444,19 +444,17 @@
     }
 
     .hero-scroll-cue {
-      position: absolute;
-      left: 50%;
-      bottom: 82px;
-      z-index: 3;
+      position: relative;
+      z-index: 2;
       width: 44px;
       height: 44px;
+      margin: -10px 0 22px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: 50%;
       background: rgba(56, 52, 49, 0.52);
       color: var(--white);
-      transform: translateX(-50%);
       backdrop-filter: blur(14px);
       transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
       animation: heroCueBounce 2.2s ease-in-out infinite;
@@ -474,7 +472,7 @@
     .hero-scroll-cue:hover {
       background: rgba(149, 64, 28, 0.9);
       border-color: rgba(255, 255, 255, 0.72);
-      transform: translateX(-50%) translateY(3px);
+      transform: translateY(3px);
     }
 
     @keyframes heroCueBounce {
@@ -1504,9 +1502,9 @@
       }
 
       .hero-scroll-cue {
-        bottom: max(58px, calc(env(safe-area-inset-bottom) + 44px));
         width: 40px;
         height: 40px;
+        margin: -4px auto 16px;
       }
 
       .hero-proof,
@@ -1782,13 +1780,13 @@
         <span class="eyebrow">Fisioterapia especializada em Artrose e Dor</span>
         <h1>CLÍNICA DE FISIOTERAPIA REGENERATIVA ESPECIALIZADA EM ARTROSE E DOR</h1>
         <p class="hero-copy">Na MELIORI, a avaliação clínica conta com a <strong>termografia</strong> para investigar a origem da dor e orientar um cuidado mais assertivo. Combinamos <strong>tecnologia</strong> e recursos terapêuticos avançados — como <strong>Proloterapia</strong>, <strong>PRP</strong>, <strong>Terapia Neural</strong> e <strong>Ondas de Choque</strong> — para construir um plano de cuidado <strong>próximo, objetivo e humanizado</strong>.</p>
+        <a class="hero-scroll-cue" href="#diferenciais-iniciais" aria-label="Ver mais conteúdo"></a>
         <p class="hero-tagline">Mais precisão no tratamento. Menos dor. Mais movimento.</p>
         <div class="hero-actions">
           <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
           <a class="button secondary" href="#como-funciona">Ver como funciona</a>
         </div>
       </div>
-      <a class="hero-scroll-cue" href="#diferenciais-iniciais" aria-label="Ver mais conteúdo"></a>
     </section>
 
     <div class="hero-proof" id="diferenciais-iniciais" aria-label="Diferenciais">
@@ -2089,6 +2087,14 @@
             <figcaption>
               <strong>Acompanhamento contínuo</strong>
               <span>Evolução observada ao longo das sessões com suporte próximo da equipe.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <img src="assets/testimonials/relato-comentarios-instagram.jpg" alt="Comentários no Instagram elogiando o atendimento e recomendando a profissional da MELIORI" loading="lazy">
+            <figcaption>
+              <strong>Reconhecimento no Instagram</strong>
+              <span>Comentários públicos de pacientes destacando a dedicação e o trabalho realizado.</span>
             </figcaption>
           </figure>
         </div>
