@@ -648,6 +648,53 @@
       background: var(--white);
     }
 
+    .testimonials {
+      background: var(--paper);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .testimonial-card {
+      overflow: hidden;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: 0 12px 32px rgba(56, 52, 49, 0.10);
+    }
+
+    .testimonial-card img {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      background: #f5f1ec;
+    }
+
+    .testimonial-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .testimonial-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--rose-dark);
+      font-size: 16px;
+    }
+
+    .testimonials-disclaimer {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     .work-gallery {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -731,7 +778,7 @@
 
     .work-mini-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       align-items: stretch;
     }
@@ -1504,6 +1551,11 @@
         background: var(--rose-dark);
       }
 
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
       .hero-proof {
         margin-top: -34px;
       }
@@ -1541,17 +1593,11 @@
         min-height: 56px;
         padding: 7px;
         border-color: rgba(167, 184, 166, 0.52);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(12px) scale(0.96);
-        animation: none;
-        transition: opacity 220ms ease, transform 220ms ease, box-shadow 180ms ease, border-color 180ms ease;
-      }
-
-      body.attendant-visible .floating-attendant {
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0) scale(1);
+        animation: attendantEntrance 700ms ease 500ms both, attendantFloat 4.8s ease-in-out 1.3s infinite;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       }
 
       .attendant-avatar {
@@ -1606,7 +1652,7 @@
   <header class="topbar">
     <nav class="nav" aria-label="Navegação principal">
       <a class="brand" href="#inicio" aria-label="MELIORI">
-        <img class="brand-logo" src="assets/brand/meliori-logo-full-cropped.jpg" alt="Meliori Fisioterapia Regenerativa">
+        <img class="brand-logo" src="assets/brand/meliori-mark-cropped.jpg" alt="Meliori Fisioterapia Regenerativa">
       </a>
       <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false">
         <span></span>
@@ -1616,6 +1662,7 @@
         <a href="#tratamento">Tratamento</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#amostras">Amostras</a>
+        <a href="#depoimentos">Depoimentos</a>
         <a href="https://www.instagram.com/meliorifisioterapia/" target="_blank" rel="noopener">Instagram</a>
         <a href="#contato">Contato</a>
         <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">WhatsApp</a>
@@ -1626,9 +1673,10 @@
   <main id="inicio">
     <section class="hero" aria-label="MELIORI fisioterapia especializada">
       <div class="hero-inner">
-        <span class="eyebrow">Fisioterapia especializada em dor e artrose</span>
-        <h1>Fisioterapia em Belo Horizonte para dor ortopédica e artrose</h1>
-        <p class="hero-copy">Na MELIORI, clínica de fisioterapia na Savassi, a avaliação clínica, a tecnologia e diferentes recursos terapêuticos se unem para construir um plano de cuidado próximo, objetivo e humanizado.</p>
+        <span class="eyebrow">Fisioterapia especializada em Artrose e Dor</span>
+        <h1>CLÍNICA DE FISIOTERAPIA REGENERATIVA ESPECIALIZADA EM ARTROSE E DOR</h1>
+        <p class="hero-copy">Na MELIORI, a avaliação clínica é feita por termografia onde localizamos a causa exata da dor para um tratamento preciso e eficaz. Utilizando a tecnologia e diferentes recursos terapêuticos a nosso favor como: Proloterapia, PRP, Terapia Neural, Ondas de Choque, entre outros que se unem para construir um plano de cuidado próximo, objetivo e humanizado.</p>
+        <p class="hero-tagline">Mais precisão no tratamento. Menos dor. Mais movimento.</p>
         <div class="hero-actions">
           <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
           <a class="button secondary" href="#como-funciona">Ver como funciona</a>
@@ -1639,16 +1687,16 @@
 
     <div class="hero-proof" id="diferenciais-iniciais" aria-label="Diferenciais">
       <div class="proof-item">
-        <strong>10+</strong>
+        <strong>20+</strong>
         <span>anos de atuação no cuidado com dor e função</span>
       </div>
       <div class="proof-item">
         <strong>BH</strong>
-        <span>atendimento presencial na Savassi, Belo Horizonte</span>
+        <span>Minas Gerais</span>
       </div>
       <div class="proof-item">
         <strong>Plano</strong>
-        <span>conduta definida de acordo com cada paciente</span>
+        <span>Cuidado personalizado, do diagnóstico à evolução</span>
       </div>
     </div>
 
@@ -1693,7 +1741,7 @@
       <div class="container">
         <div class="section-head">
           <span class="section-kicker">Para quem é</span>
-          <h2>Para pessoas que convivem com dor e querem entender suas opções</h2>
+          <h2>Para pessoas que convivem com dor, limitações de movimentos e buscam uma abordagem individualizada para melhorar sua qualidade de vida!</h2>
           <p class="lead">A MELIORI atende pacientes com dor articular, dores ortopédicas e limitações de movimento, especialmente adultos a partir dos 30 anos, atletas e idosos.</p>
         </div>
         <div class="grid grid-3">
@@ -1852,16 +1900,6 @@
                   <span>Estrutura para avaliação e atendimento presencial.</span>
                 </figcaption>
               </figure>
-
-              <figure class="work-card small">
-                <div class="work-photo">
-                  <img src="assets/work-samples/sala-atendimento-meliori.jpeg" alt="Sala de atendimento da MELIORI com mesa, monitor e maca">
-                </div>
-                <figcaption class="work-caption">
-                  <strong>Ambiente de cuidado</strong>
-                  <span>Espaço reservado para escuta, exame e orientação.</span>
-                </figcaption>
-              </figure>
             </div>
           </div>
         </div>
@@ -1869,12 +1907,54 @@
       </div>
     </section>
 
+    <section id="depoimentos" class="testimonials">
+      <div class="container">
+        <div class="section-head with-action">
+          <div>
+            <span class="section-kicker">Depoimentos & Feedbacks</span>
+            <h2>O que nossos pacientes compartilham</h2>
+            <p class="lead">Mensagens espontâneas e relatos reais de evolução no tratamento e no alívio da dor.</p>
+          </div>
+          <p class="section-note">Depoimentos compartilhados com autorização. Cada organismo e resposta terapêutica é individual.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <figure class="testimonial-card">
+            <img src="assets/testimonials/relato-evolucao-termografica.jpg" alt="Relato de paciente com acompanhamento termográfico e melhora funcional" loading="lazy">
+            <figcaption>
+              <strong>Evolução e ganho de movimento</strong>
+              <span>Acompanhamento integrado com avaliação de parâmetros funcionais.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <img src="assets/testimonials/relato-paciente.jpg" alt="Feedback de paciente sobre o atendimento e evolução do tratamento" loading="lazy">
+            <figcaption>
+              <strong>Experiência no atendimento</strong>
+              <span>Acolhimento próximo e condutas alinhadas ao objetivo do paciente.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <img src="assets/testimonials/relato-alivio-dor.jpg" alt="Relato de alívio e melhora dos sintomas após intervenção terapêutica" loading="lazy">
+            <figcaption>
+              <strong>Alívio dos sintomas</strong>
+              <span>Feedback real sobre o conforto e a resposta ao plano de cuidado.</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="testimonials-disclaimer">
+          * Os resultados podem variar de acordo com o quadro clínico, gravidade da condição e aderência ao tratamento proposto.
+        </p>
+      </div>
+    </section>
+
     <section class="cta-band">
       <div class="container cta-content">
         <div>
           <span class="section-kicker">Agendamento</span>
-          <h2>Quer avaliar sua dor com uma equipe especializada?</h2>
-          <p>Fale com a MELIORI pelo WhatsApp e agende sua avaliação presencial na Savassi. O plano de tratamento é definido somente após avaliação profissional.</p>
+          <h2>Fale com a MELIORI pelo WhatsApp e agende sua avaliação, será um prazer te atender</h2>
         </div>
         <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
@@ -1892,7 +1972,7 @@
     </section>
 
     <section id="contato">
-      <div class="container info-grid">
+      <div class="container">
         <div class="panel">
           <span class="section-kicker">Contato</span>
           <h2>Atendimento em Belo Horizonte</h2>
@@ -1916,12 +1996,6 @@
             </div>
           </div>
         </div>
-        <aside class="card">
-          <div class="icon">R$</div>
-          <h3>Investimento</h3>
-          <p>O tratamento é definido após avaliação. Conforme briefing, os planos podem partir de R$ 2.600, de acordo com a indicação e necessidade do paciente.</p>
-          <p><strong>Observação:</strong> resultados e condutas variam conforme cada caso e dependem de avaliação profissional.</p>
-        </aside>
       </div>
     </section>
   </main>
