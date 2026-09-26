@@ -1034,13 +1034,38 @@
     }
 
     .cta-band {
-      background:
-        linear-gradient(120deg, rgba(56, 52, 49, 0.95), rgba(149, 64, 28, 0.76)),
-        url("assets/agendamento-bg.webp") center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
       color: var(--white);
     }
 
+    .cta-band::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background:
+        linear-gradient(120deg, rgba(56, 52, 49, 0.93), rgba(149, 64, 28, 0.74)),
+        url("assets/agendamento-bg.webp") center center / cover no-repeat;
+      z-index: 0;
+      animation: ctaBgPan 24s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes ctaBgPan {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.1) translate(-2%, -1%);
+      }
+      100% {
+        transform: scale(1.15) translate(2%, 1%);
+      }
+    }
+
     .cta-content {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 28px;
