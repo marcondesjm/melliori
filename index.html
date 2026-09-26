@@ -163,6 +163,7 @@
     }
 
     .brand {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -171,7 +172,27 @@
       flex: 0 0 auto;
     }
 
+    .brand::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 0;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--white);
+      transform: translate(-50%, -50%);
+      transition: opacity 160ms ease;
+    }
+
+    body.page-is-moving .brand::before {
+      opacity: 0;
+    }
+
     .brand-logo {
+      position: relative;
+      z-index: 1;
       width: clamp(210px, 21vw, 280px);
       height: 84px;
       display: block;
@@ -656,10 +677,13 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
-      align-items: start;
+      align-items: stretch;
     }
 
     .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
       overflow: hidden;
       margin: 0;
       border: 1px solid var(--line);
@@ -668,15 +692,77 @@
       box-shadow: 0 12px 32px rgba(56, 52, 49, 0.10);
     }
 
-    .testimonial-card img {
+    .testimonial-photo {
+      position: relative;
+      display: block;
+      overflow: hidden;
       width: 100%;
+      padding: 0;
+      border: 0;
+      background: #f5f1ec;
+      color: var(--white);
+      cursor: zoom-in;
+      font: inherit;
+    }
+
+    .testimonial-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(28, 24, 22, 0.08), rgba(28, 24, 22, 0.48));
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .testimonial-photo-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(62, 29, 12, 0.76);
+      box-shadow: 0 12px 28px rgba(31, 24, 19, 0.24);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translate(-50%, 8px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      white-space: nowrap;
+    }
+
+    .testimonial-photo:hover::before,
+    .testimonial-photo:focus-visible::before,
+    .testimonial-photo:hover .testimonial-photo-hint,
+    .testimonial-photo:focus-visible .testimonial-photo-hint {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .testimonial-photo:focus-visible {
+      outline: 3px solid rgba(160, 60, 22, 0.34);
+      outline-offset: 4px;
+    }
+
+    .testimonial-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
       height: auto;
-      max-height: 520px;
       object-fit: contain;
+      object-position: center;
       background: #f5f1ec;
     }
 
     .testimonial-card figcaption {
+      flex: 1;
       padding: 14px 16px 16px;
       color: var(--muted);
       font-size: 14px;
@@ -1042,16 +1128,18 @@
     .cta-band {
       position: relative;
       overflow: hidden;
+      padding: 92px 0;
       color: var(--white);
-      background: linear-gradient(120deg, #383431 0%, #95401c 100%);
+      background: #383431;
     }
 
     .cta-band::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: url("assets/agendamento-bg.webp") right center / contain no-repeat;
+      background: url("assets/agendamento-bg.webp") right center / cover no-repeat;
       z-index: 0;
+      opacity: 0.54;
       animation: ctaBgPan 24s ease-in-out infinite alternate;
       will-change: transform;
     }
@@ -1062,8 +1150,8 @@
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(56, 52, 49, 0.92) 0%, rgba(56, 52, 49, 0.7) 45%, rgba(149, 64, 28, 0.42) 100%),
-        linear-gradient(0deg, rgba(149, 64, 28, 0.18), rgba(149, 64, 28, 0.18));
+        linear-gradient(90deg, rgba(56, 52, 49, 0.98) 0%, rgba(56, 52, 49, 0.94) 36%, rgba(56, 52, 49, 0.68) 62%, rgba(56, 52, 49, 0.34) 100%),
+        linear-gradient(0deg, rgba(149, 64, 28, 0.24), rgba(149, 64, 28, 0.1));
       pointer-events: none;
     }
 
@@ -1083,16 +1171,31 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: center;
+      grid-template-columns: minmax(0, 620px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .cta-content h2 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: clamp(46px, 5.2vw, 72px);
+      line-height: 0.96;
     }
 
     .cta-content p {
-      margin: 14px 0 0;
-      max-width: 720px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 18px;
+      max-width: 520px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: clamp(17px, 1.4vw, 20px);
+      line-height: 1.55;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .instagram-band {
@@ -1409,6 +1512,11 @@
         gap: 12px;
       }
 
+      .brand::before {
+        width: 72px;
+        height: 72px;
+      }
+
       .brand-logo {
         width: 175px;
         height: 64px;
@@ -1535,6 +1643,31 @@
       .care-board,
       .booking-options {
         grid-template-columns: 1fr;
+      }
+
+      .cta-band {
+        padding: 78px 0;
+      }
+
+      .cta-band::before {
+        background-position: right bottom;
+        background-size: 118% auto;
+        opacity: 0.34;
+      }
+
+      .cta-band::after {
+        background:
+          linear-gradient(180deg, rgba(56, 52, 49, 0.97) 0%, rgba(56, 52, 49, 0.9) 58%, rgba(56, 52, 49, 0.68) 100%),
+          linear-gradient(0deg, rgba(149, 64, 28, 0.22), rgba(149, 64, 28, 0.08));
+      }
+
+      .cta-content h2 {
+        max-width: 10ch;
+        font-size: clamp(40px, 12vw, 54px);
+      }
+
+      .cta-content p {
+        max-width: 32rem;
       }
 
       .section-note {
@@ -2074,7 +2207,10 @@
 
         <div class="testimonial-grid">
           <figure class="testimonial-card">
-            <img src="assets/testimonials/relato-acompanhamento.jpg" alt="Relato sobre o acompanhamento contínuo e evolução no tratamento" loading="lazy">
+            <button class="testimonial-photo" type="button" aria-label="Abrir foto do relato sobre acompanhamento contínuo" title="Abrir foto">
+              <img src="assets/testimonials/relato-acompanhamento.jpg" alt="Relato sobre o acompanhamento contínuo e evolução no tratamento" loading="lazy">
+              <span class="testimonial-photo-hint" aria-hidden="true">Abrir foto</span>
+            </button>
             <figcaption>
               <strong>Acompanhamento contínuo</strong>
               <span>Evolução observada ao longo das sessões com suporte próximo da equipe.</span>
@@ -2082,7 +2218,10 @@
           </figure>
 
           <figure class="testimonial-card">
-            <img src="assets/testimonials/relato-paciente.jpg" alt="Feedback de paciente sobre o atendimento e evolução do tratamento" loading="lazy">
+            <button class="testimonial-photo" type="button" aria-label="Abrir foto do feedback sobre atendimento" title="Abrir foto">
+              <img src="assets/testimonials/relato-paciente.jpg" alt="Feedback de paciente sobre o atendimento e evolução do tratamento" loading="lazy">
+              <span class="testimonial-photo-hint" aria-hidden="true">Abrir foto</span>
+            </button>
             <figcaption>
               <strong>Experiência no atendimento</strong>
               <span>Acolhimento próximo e condutas alinhadas ao objetivo do paciente.</span>
@@ -2090,7 +2229,10 @@
           </figure>
 
           <figure class="testimonial-card">
-            <img src="assets/testimonials/relato-melhora-funcional.jpg" alt="Relato de melhora funcional e retorno às atividades diárias" loading="lazy">
+            <button class="testimonial-photo" type="button" aria-label="Abrir foto do relato de melhora funcional" title="Abrir foto">
+              <img src="assets/testimonials/relato-melhora-funcional.jpg" alt="Relato de melhora funcional e retorno às atividades diárias" loading="lazy">
+              <span class="testimonial-photo-hint" aria-hidden="true">Abrir foto</span>
+            </button>
             <figcaption>
               <strong>Melhora funcional</strong>
               <span>Retomada de movimentos e atividades com maior autonomia e conforto.</span>
@@ -2132,9 +2274,12 @@
       <div class="container cta-content">
         <div>
           <span class="section-kicker">Agendamento</span>
-          <h2>Fale com a MELIORI pelo WhatsApp e agende sua avaliação, será um prazer te atender</h2>
+          <h2>Agende sua avaliação</h2>
+          <p>Converse com a equipe da MELIORI pelo WhatsApp e receba orientação para o melhor caminho de cuidado.</p>
+          <div class="cta-actions">
+            <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar no WhatsApp</a>
+          </div>
         </div>
-        <a class="button" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
     </section>
 
@@ -2238,9 +2383,11 @@
     const workGallery = document.querySelector(".work-gallery");
     const workCards = workGallery ? Array.from(workGallery.querySelectorAll(".work-card")) : [];
     const workImages = workGallery ? Array.from(workGallery.querySelectorAll(".work-photo img")) : [];
+    const testimonialPhotos = document.querySelectorAll(".testimonial-photo");
     const workDots = document.querySelector(".work-carousel-dots");
     const motionCards = document.querySelectorAll(".proof-item, .condition, .booking-card, .card, .therapy, .step, .work-card, .instagram-card, .panel");
     const hero = document.querySelector(".hero");
+    let movementTimer;
 
     function setMenu(open) {
       document.body.classList.toggle("menu-open", open);
@@ -2271,6 +2418,16 @@
     updateAttendantVisibility();
     window.addEventListener("scroll", updateAttendantVisibility, { passive: true });
 
+    function updatePageMovement() {
+      document.body.classList.add("page-is-moving");
+      window.clearTimeout(movementTimer);
+      movementTimer = window.setTimeout(() => {
+        document.body.classList.remove("page-is-moving");
+      }, 180);
+    }
+
+    window.addEventListener("scroll", updatePageMovement, { passive: true });
+
     workImages.forEach((image) => {
       image.tabIndex = 0;
       image.setAttribute("role", "button");
@@ -2286,6 +2443,15 @@
           event.preventDefault();
           openImage();
         }
+      });
+    });
+
+    testimonialPhotos.forEach((button) => {
+      const image = button.querySelector("img");
+      if (!image) return;
+
+      button.addEventListener("click", () => {
+        window.open(image.currentSrc || image.src, "_blank", "noopener");
       });
     });
 
