@@ -799,6 +799,15 @@
       background: #f5f1ec;
     }
 
+    .testimonial-card > img {
+      cursor: zoom-in;
+    }
+
+    .testimonial-card > img:focus-visible {
+      outline: 3px solid rgba(160, 60, 22, 0.34);
+      outline-offset: 4px;
+    }
+
     .testimonial-card figcaption {
       flex: 1;
       padding: 14px 16px 16px;
@@ -1049,6 +1058,81 @@
 
     .motion-card.is-visible:hover {
       transform: translateY(-4px);
+    }
+
+    body.image-viewer-open {
+      overflow: hidden;
+    }
+
+    .image-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 46px);
+      background: rgba(28, 24, 22, 0.86);
+      opacity: 0;
+      pointer-events: none;
+      overflow: auto;
+      transition: opacity 180ms ease;
+    }
+
+    .image-viewer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .image-viewer-frame {
+      position: relative;
+      display: grid;
+      max-width: min(1120px, 100%);
+      max-height: 100%;
+      gap: 12px;
+    }
+
+    .image-viewer-close {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      right: max(14px, env(safe-area-inset-right));
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      background: rgba(56, 52, 49, 0.78);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 28px;
+      line-height: 1;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .image-viewer-close:hover,
+    .image-viewer-close:focus-visible {
+      background: rgba(149, 64, 28, 0.94);
+      transform: scale(1.04);
+    }
+
+    .image-viewer-image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: min(82vh, 820px);
+      object-fit: contain;
+      border-radius: 8px;
+      background: #f5f1ec;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+    }
+
+    .image-viewer-caption {
+      min-height: 20px;
+      max-width: 72ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 14px;
+      line-height: 1.45;
     }
 
     .card h3 {
@@ -2441,6 +2525,14 @@
     </div>
   </footer>
 
+  <div class="image-viewer" id="image-viewer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualização da imagem">
+    <div class="image-viewer-frame">
+      <button class="image-viewer-close" type="button" aria-label="Fechar imagem">×</button>
+      <img class="image-viewer-image" src="" alt="">
+      <p class="image-viewer-caption"></p>
+    </div>
+  </div>
+
   <a class="floating-attendant" href="https://wa.me/5531997870707?text=Ol%C3%A1%2C%20vim%20pela%20landing%20page%20da%20MELIORI%20e%20gostaria%20de%20falar%20com%20a%20atendente." target="_blank" rel="noopener" aria-label="Falar com a atendente da MELIORI pelo WhatsApp">
     <span class="attendant-avatar" aria-hidden="true">
       <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
@@ -2461,6 +2553,10 @@
     const workDots = document.querySelector(".work-carousel-dots");
     const motionCards = document.querySelectorAll(".proof-item, .condition, .booking-card, .card, .therapy, .step, .work-card, .instagram-card, .panel");
     const hero = document.querySelector(".hero");
+    const imageViewer = document.getElementById("image-viewer");
+    const imageViewerImage = imageViewer?.querySelector(".image-viewer-image");
+    const imageViewerCaption = imageViewer?.querySelector(".image-viewer-caption");
+    const imageViewerClose = imageViewer?.querySelector(".image-viewer-close");
     let movementTimer;
 
     function setMenu(open) {
@@ -2479,6 +2575,11 @@
 
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
+        if (imageViewer?.classList.contains("is-open")) {
+          closeImageViewer();
+          return;
+        }
+
         setMenu(false);
       }
     });
@@ -2502,31 +2603,56 @@
 
     window.addEventListener("scroll", updatePageMovement, { passive: true });
 
-    workImages.forEach((image) => {
-      image.tabIndex = 0;
-      image.setAttribute("role", "button");
+    function openImageViewer(image) {
+      if (!imageViewer || !imageViewerImage || !imageViewerCaption || !image) return;
+
+      imageViewerImage.src = image.currentSrc || image.src;
+      imageViewerImage.alt = image.alt || "Imagem ampliada";
+      imageViewerCaption.textContent = image.alt || "";
+      imageViewer.classList.add("is-open");
+      imageViewer.setAttribute("aria-hidden", "false");
+      document.body.classList.add("image-viewer-open");
+      imageViewerClose?.focus();
+    }
+
+    function closeImageViewer() {
+      if (!imageViewer || !imageViewerImage || !imageViewerCaption) return;
+
+      imageViewer.classList.remove("is-open");
+      imageViewer.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("image-viewer-open");
+      imageViewerImage.removeAttribute("src");
+      imageViewerImage.alt = "";
+      imageViewerCaption.textContent = "";
+    }
+
+    const openableImages = Array.from(document.querySelectorAll("main img, footer img"));
+
+    openableImages.forEach((image) => {
+      const imageButton = image.closest(".testimonial-photo");
+
       image.setAttribute("title", "Abrir imagem");
 
-      function openImage() {
-        window.open(image.currentSrc || image.src, "_blank", "noopener");
+      if (imageButton) {
+        imageButton.addEventListener("click", () => openImageViewer(image));
+        return;
       }
 
-      image.addEventListener("click", openImage);
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.addEventListener("click", () => openImageViewer(image));
       image.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openImage();
+          openImageViewer(image);
         }
       });
     });
 
-    testimonialPhotos.forEach((button) => {
-      const image = button.querySelector("img");
-      if (!image) return;
+    imageViewerClose?.addEventListener("click", closeImageViewer);
 
-      button.addEventListener("click", () => {
-        window.open(image.currentSrc || image.src, "_blank", "noopener");
-      });
+    imageViewer?.addEventListener("click", (event) => {
+      if (event.target === imageViewer) closeImageViewer();
     });
 
     function setActiveWorkCard(index) {
