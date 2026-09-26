@@ -1624,6 +1624,49 @@
       outline-offset: 4px;
     }
 
+    .scroll-top-button {
+      position: fixed;
+      right: 24px;
+      bottom: 104px;
+      z-index: 29;
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 50%;
+      background: rgba(56, 52, 49, 0.9);
+      color: #ffffff;
+      box-shadow: 0 12px 28px rgba(28, 24, 22, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.92);
+      transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    body.reached-page-end .scroll-top-button {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .scroll-top-button:hover {
+      background: var(--rose-dark);
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .scroll-top-button:focus-visible {
+      outline: 3px solid var(--straw);
+      outline-offset: 4px;
+    }
+
+    .scroll-top-button svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+
     .attendant-avatar {
       display: grid;
       place-items: center;
@@ -2051,10 +2094,18 @@
         width: 32px;
         height: 32px;
       }
+
+      .scroll-top-button {
+        right: 17px;
+        bottom: 84px;
+        width: 48px;
+        height: 48px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .floating-attendant,
+      .scroll-top-button,
       .hero-scroll-cue,
       .hero::before,
       .therapy-list,
@@ -2555,6 +2606,13 @@
       </svg>
     </span>
   </a>
+
+  <a class="scroll-top-button" href="#inicio" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+      <path d="M12 19V5"></path>
+      <path d="m5 12 7-7 7 7"></path>
+    </svg>
+  </a>
   <script>
     const currentYear = document.getElementById("current-year");
     if (currentYear) currentYear.textContent = String(new Date().getFullYear());
@@ -2607,6 +2665,19 @@
 
     updateAttendantVisibility();
     window.addEventListener("scroll", updateAttendantVisibility, { passive: true });
+
+    function updateScrollTopVisibility() {
+      const pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      const reachedEnd = window.scrollY + window.innerHeight >= pageHeight - 80;
+      document.body.classList.toggle("reached-page-end", reachedEnd);
+    }
+
+    updateScrollTopVisibility();
+    window.addEventListener("scroll", updateScrollTopVisibility, { passive: true });
+    window.addEventListener("resize", updateScrollTopVisibility);
 
     function updatePageMovement() {
       document.body.classList.add("page-is-moving");
