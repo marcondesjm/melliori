@@ -13,19 +13,19 @@
   <meta name="geo.placename" content="Belo Horizonte">
   <link rel="canonical" href="https://meliorifisioterapia.vercel.app/">
   <link rel="icon" type="image/png" href="assets/brand/meliori-logo-full-cropped.png">
-  <link rel="preload" as="image" href="assets/meliori-hero2.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/meliori-hero1.png" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="MELIORI Fisioterapia Regenerativa">
   <meta property="og:title" content="Fisioterapia em Belo Horizonte | MELIORI">
   <meta property="og:description" content="Clínica de fisioterapia na Savassi, Belo Horizonte, com avaliação individualizada para dor ortopédica, artrose e recuperação de movimento.">
   <meta property="og:url" content="https://meliorifisioterapia.vercel.app/">
-  <meta property="og:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png">
+  <meta property="og:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png">
   <meta property="og:image:alt" content="Atendimento de fisioterapia individualizada na MELIORI em Belo Horizonte">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fisioterapia em Belo Horizonte | MELIORI">
   <meta name="twitter:description" content="Atendimento de fisioterapia na Savassi para dor, artrose e mobilidade com plano de cuidado personalizado.">
-  <meta name="twitter:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png">
+  <meta name="twitter:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,6 +36,7 @@
       "url": "https://meliorifisioterapia.vercel.app/",
       "logo": "https://meliorifisioterapia.vercel.app/assets/brand/meliori-logo-full-cropped.png",
       "image": [
+        "https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png",
         "https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png",
         "https://meliorifisioterapia.vercel.app/assets/work-samples/consultorio-termografia.jpeg",
         "https://meliorifisioterapia.vercel.app/assets/work-samples/sala-atendimento-meliori.jpeg"
@@ -390,7 +391,7 @@
       background-image:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
-        url("assets/meliori-hero2.png");
+        url("assets/meliori-hero1.png");
     }
 
     .hero::after {
@@ -401,7 +402,7 @@
       background-image:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
-        url("assets/meliori-hero1.png");
+        url("assets/meliori-hero2.png");
     }
 
     @keyframes heroImageSwap {
@@ -1780,22 +1781,24 @@
       }
 
       .hero::before {
-        background-position: 65% 20%;
+        background-position: center top;
+        background-size: min(145vw, 660px) auto;
         transform: scale(1.0);
         background-image:
-          linear-gradient(90deg, rgba(56, 52, 49, 0.66), rgba(56, 52, 49, 0.38) 56%, rgba(56, 52, 49, 0.08)),
-          linear-gradient(0deg, rgba(56, 52, 49, 0.86), rgba(56, 52, 49, 0.18) 58%, rgba(56, 52, 49, 0.06)),
-          url("assets/meliori-hero2.png");
+          linear-gradient(180deg, rgba(56, 52, 49, 0.1) 0%, rgba(56, 52, 49, 0.12) 30%, rgba(56, 52, 49, 0.76) 58%, rgba(56, 52, 49, 0.96) 100%),
+          linear-gradient(90deg, rgba(56, 52, 49, 0.5), rgba(56, 52, 49, 0.24) 54%, rgba(56, 52, 49, 0.08)),
+          url("assets/meliori-hero1.png");
       }
 
       .hero::after {
         display: block;
-        background-position: 52% 20%;
+        background-position: center top;
+        background-size: min(145vw, 660px) auto;
         transform: scale(1.0);
         background-image:
-          linear-gradient(90deg, rgba(56, 52, 49, 0.68), rgba(56, 52, 49, 0.4) 56%, rgba(56, 52, 49, 0.1)),
-          linear-gradient(0deg, rgba(56, 52, 49, 0.86), rgba(56, 52, 49, 0.18) 58%, rgba(56, 52, 49, 0.06)),
-          url("assets/meliori-hero1.png");
+          linear-gradient(180deg, rgba(56, 52, 49, 0.1) 0%, rgba(56, 52, 49, 0.12) 30%, rgba(56, 52, 49, 0.76) 58%, rgba(56, 52, 49, 0.96) 100%),
+          linear-gradient(90deg, rgba(56, 52, 49, 0.52), rgba(56, 52, 49, 0.26) 54%, rgba(56, 52, 49, 0.08)),
+          url("assets/meliori-hero2.png");
       }
 
       .hero-inner {
@@ -2127,7 +2130,7 @@
       }
 
       .hero::after {
-        opacity: 1;
+        opacity: 0;
       }
     }
   </style>
