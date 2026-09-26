@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fisioterapia em Belo Horizonte | MELIORI Fisioterapia Regenerativa</title>
   <meta name="description" content="Fisioterapia em Belo Horizonte na Savassi para dor ortopédica, artrose e mobilidade. Avaliação individualizada, termografia e plano de cuidado personalizado.">
+  <meta name="keywords" content="fisioterapia em Belo Horizonte, fisioterapia na Savassi, fisioterapia para artrose, dor ortopédica, termografia, MELIORI Fisioterapia">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="MELIORI Fisioterapia Regenerativa">
   <meta name="theme-color" content="#95401C">
+  <meta name="geo.region" content="BR-MG">
+  <meta name="geo.placename" content="Belo Horizonte">
   <link rel="canonical" href="https://meliorifisioterapia.vercel.app/">
-  <link rel="icon" type="image/jpeg" href="assets/brand/meliori-mark-cropped.jpg">
+  <link rel="icon" type="image/png" href="assets/brand/meliori-logo-full-cropped.png">
+  <link rel="preload" as="image" href="assets/meliori-hero2.png" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="MELIORI Fisioterapia Regenerativa">
   <meta property="og:title" content="Fisioterapia em Belo Horizonte | MELIORI">
   <meta property="og:description" content="Clínica de fisioterapia na Savassi, Belo Horizonte, com avaliação individualizada para dor ortopédica, artrose e recuperação de movimento.">
   <meta property="og:url" content="https://meliorifisioterapia.vercel.app/">
-  <meta property="og:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png">
+  <meta property="og:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png">
   <meta property="og:image:alt" content="Atendimento de fisioterapia individualizada na MELIORI em Belo Horizonte">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fisioterapia em Belo Horizonte | MELIORI">
   <meta name="twitter:description" content="Atendimento de fisioterapia na Savassi para dor, artrose e mobilidade com plano de cuidado personalizado.">
-  <meta name="twitter:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png">
+  <meta name="twitter:image" content="https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -30,9 +34,9 @@
       "name": "MELIORI Fisioterapia Regenerativa",
       "alternateName": "MELIORI",
       "url": "https://meliorifisioterapia.vercel.app/",
-      "logo": "https://meliorifisioterapia.vercel.app/assets/brand/meliori-logo-full-cropped.jpg",
+      "logo": "https://meliorifisioterapia.vercel.app/assets/brand/meliori-logo-full-cropped.png",
       "image": [
-        "https://meliorifisioterapia.vercel.app/assets/meliori-hero1.png",
+        "https://meliorifisioterapia.vercel.app/assets/meliori-hero2.png",
         "https://meliorifisioterapia.vercel.app/assets/work-samples/consultorio-termografia.jpeg",
         "https://meliorifisioterapia.vercel.app/assets/work-samples/sala-atendimento-meliori.jpeg"
       ],
@@ -91,6 +95,40 @@
           }
         ]
       }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://meliorifisioterapia.vercel.app/#website",
+      "url": "https://meliorifisioterapia.vercel.app/",
+      "name": "MELIORI Fisioterapia Regenerativa",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://meliorifisioterapia.vercel.app/#clinica"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://meliorifisioterapia.vercel.app/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://meliorifisioterapia.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fisioterapia em Belo Horizonte",
+          "item": "https://meliorifisioterapia.vercel.app/#inicio"
+        }
+      ]
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,9 +202,11 @@
 
     .brand {
       position: relative;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      width: 88px;
+      height: 88px;
       font-weight: 800;
       letter-spacing: 0;
       flex: 0 0 auto;
@@ -178,10 +218,10 @@
       left: 50%;
       top: 50%;
       z-index: 0;
-      width: 88px;
-      height: 88px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.9);
       transform: translate(-50%, -50%);
       transition: opacity 160ms ease;
     }
@@ -193,12 +233,10 @@
     .brand-logo {
       position: relative;
       z-index: 1;
-      width: clamp(210px, 21vw, 280px);
-      height: 84px;
+      width: 78px;
+      height: 78px;
       display: block;
       object-fit: contain;
-      transform: scale(1.06);
-      transform-origin: center left;
     }
 
     .nav-links {
@@ -352,7 +390,7 @@
       background-image:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
-        url("assets/meliori-hero1.png");
+        url("assets/meliori-hero2.png");
     }
 
     .hero::after {
@@ -363,7 +401,7 @@
       background-image:
         linear-gradient(90deg, rgba(56, 52, 49, 0.82), rgba(56, 52, 49, 0.5) 47%, rgba(56, 52, 49, 0.18)),
         linear-gradient(0deg, rgba(56, 52, 49, 0.72), rgba(56, 52, 49, 0.04) 42%),
-        url("assets/meliori-hero2.png");
+        url("assets/meliori-hero1.png");
     }
 
     @keyframes heroImageSwap {
@@ -897,6 +935,45 @@
       font-size: 13px;
       font-weight: 600;
       line-height: 1.35;
+    }
+
+    @media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+      .work-card {
+        grid-template-rows: 1fr;
+      }
+
+      .work-caption {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        min-height: 0;
+        padding: 13px 14px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: rgba(56, 52, 49, 0.84);
+        color: var(--white);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 180ms ease, transform 180ms ease;
+        pointer-events: none;
+        backdrop-filter: blur(10px);
+      }
+
+      .work-caption strong,
+      .work-caption span {
+        color: inherit;
+      }
+
+      .work-caption span {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .work-card:hover .work-caption,
+      .work-card:focus-within .work-caption {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .booking-options {
@@ -1512,17 +1589,14 @@
         gap: 12px;
       }
 
-      .brand::before {
+      .brand {
         width: 72px;
         height: 72px;
       }
 
       .brand-logo {
-        width: 175px;
+        width: 64px;
         height: 64px;
-        padding: 5px 8px;
-        transform: scale(1.05);
-        transform-origin: center left;
       }
 
       .menu-toggle {
@@ -1584,7 +1658,7 @@
         background-image:
           linear-gradient(90deg, rgba(56, 52, 49, 0.66), rgba(56, 52, 49, 0.38) 56%, rgba(56, 52, 49, 0.08)),
           linear-gradient(0deg, rgba(56, 52, 49, 0.86), rgba(56, 52, 49, 0.18) 58%, rgba(56, 52, 49, 0.06)),
-          url("assets/meliori-hero1.png");
+          url("assets/meliori-hero2.png");
       }
 
       .hero::after {
